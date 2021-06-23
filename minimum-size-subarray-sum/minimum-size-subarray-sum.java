@@ -2,19 +2,13 @@ class Solution {
     public int minSubArrayLen(int target, int[] nums) {
      
         int len = nums.length;
-        int res=len+1,sum=nums[0];
+        int res=len+1,sum=0;
         
-        for(int i=0,j=0;i<=j && j<len;)
+        for(int i=0,j=0;i<=j && j<len;j++)
         {
-            if(sum<target)
-            {
-                j++;
-                
-                if(j<=len-1)
-                    sum+=nums[j];
-            }
+            sum+=nums[j];
             
-            else
+            while(sum>=target && i<=j)
             {
                // System.out.println("i="+i+", j="+j);
                 int n = j-i+1;
