@@ -13,15 +13,15 @@ class Solution {
             {
                 if(ct==hm1.get(cs))
                     continue;
-                else
-                    return false;
+                
+                return false;
             }
             else if(hm2.containsKey(ct))
             {
                 if(cs==hm2.get(ct))
                     continue;
-                else
-                    return false;
+                
+                return false;
             }
             else
             {
