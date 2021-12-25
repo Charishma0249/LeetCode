@@ -2,30 +2,56 @@ class Solution {
     public int[][] kClosest(int[][] points, int k) {
         
         int[][] res = new int[k][2];
-        int len = points.length;
+        PriorityQueue<Point> pq = new PriorityQueue<>(new Comparator<Point>(){
+            
+            @Override
+            public int compare(Point p1, Point p2) {
+                if(p1.distance>p2.distance)
+                    return 1;
+                else if(p1.distance<p2.distance)
+                    return -1;
+                return 0;
+            }
+        });
         
-        HashMap<Integer, Double> hm = new HashMap<>();
-        
-        for(int i=0; i<len; i++)
-        {
-            double dist = Math.sqrt(points[i][0]*points[i][0] + points[i][1]*points[i][1]);
-            hm.put(i, dist);
+        for(int i=0; i<points.length; i++) {
+            
+            int d = points[i][0]*points[i][0]+points[i][1]*points[i][1];
+            pq.add(new Point(points[i][0], points[i][1], d));
         }
         
-        HashMap<Integer, Double> temp = hm.entrySet().stream().sorted((i, j) -> i.getValue().compareTo(j.getValue())).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2)->e1, LinkedHashMap::new));
-        
+        // int j=pq.size();
+        // while(j>0) {
+        //     System.out.println(pq.poll().toString());
+        //     j--;
+        // }
         int i=0;
-        for(Map.Entry<Integer, Double> entry : temp.entrySet())
-        {
-            int n = entry.getKey();
-            res[i][0] = points[n][0];
-            res[i][1] = points[n][1];
+        while(k>0) {
+            Point p = pq.poll();
+            res[i][0] = p.x;
+            res[i][1] = p.y;
             i++;
-            
-            if(i==k)
-                break;
+            k--;
         }
         
         return res;
+    }
+}
+
+class Point {
+    int x;
+    int y;
+    int distance;
+    
+    public Point() {}
+    
+    public Point(int x, int y, int distance) {
+        this.x = x;
+        this.y = y;
+        this.distance = distance;
+    }
+    
+    public String toString() {
+        return "x = "+this.x+" y = "+this.y+" d = "+this.distance;
     }
 }
