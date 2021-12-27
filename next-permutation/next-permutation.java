@@ -1,16 +1,21 @@
 class Solution {
     public void nextPermutation(int[] nums) {
         
-        int maxIndex=0, max=nums[0], min;
-        for(int i=1; i<nums.length; i++) {
+        int maxIndex=0;
+        for(int i=nums.length-1; i>0; i--) {
             if(nums[i]>nums[i-1]) {
                 
                 maxIndex = i;
+                break;
             }
         }
-        
+        //System.out.println(maxIndex);
         if(maxIndex==0) {
-            Arrays.sort(nums);
+            for(int i=0, j=nums.length-1; i<j; i++,j--) {
+                int temp = nums[i];
+                nums[i]=nums[j];
+                nums[j]=temp;
+            }
             return ;
         }
         
@@ -20,21 +25,18 @@ class Solution {
                 nextMax = i;
             }
         }
-         //System.out.println("nextMax = "+nextMax+" maxIndex = "+maxIndex);
         
         if(nextMax==maxIndex-1) {
             int temp = nums[maxIndex];
             nums[maxIndex] = nums[nextMax];
             nums[nextMax] = temp;
-            Arrays.sort(nums, maxIndex, nums.length);
         }
         else {
-            //System.out.println("nextMax = "+nextMax+" maxIndex = "+maxIndex);
             int temp = nums[maxIndex-1];
             nums[maxIndex-1] = nums[nextMax];
             nums[nextMax] = temp;
-            Arrays.sort(nums, maxIndex, nums.length);
-            //Arrays.sort
         }
+        
+        Arrays.sort(nums, maxIndex, nums.length);
     }
 }
