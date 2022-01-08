@@ -12,10 +12,10 @@ class Solution {
             if(Math.ceil(Math.log(i)/cons) == Math.floor(Math.log(i)/cons))
                 res[i]=1;
             else {
-                if(i%2==0)
-                    res[i] = res[i/2];
-                else
-                    res[i] = res[i/2]+1;
+                
+                res[i] = res[i/2];
+                if(i%2==1)
+                    res[i] += 1;
             }
         }
         
