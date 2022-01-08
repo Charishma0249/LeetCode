@@ -7,8 +7,9 @@ class Solution {
         if(n>0)
             res[1] = 1;
         
+        double cons = Math.log(2);
         for(int i=2; i<n+1; i++) {
-            if(Math.ceil(Math.log(i)/Math.log(2)) == Math.floor(Math.log(i)/Math.log(2)))
+            if(Math.ceil(Math.log(i)/cons) == Math.floor(Math.log(i)/cons))
                 res[i]=1;
             else {
                 if(i%2==0)
