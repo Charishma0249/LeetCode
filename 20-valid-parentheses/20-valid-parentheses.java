@@ -16,8 +16,7 @@ class Solution {
                 stk.push(c);
         }
         
-        if(!stk.isEmpty())
-            return false;
-        return true;
+        return !stk.isEmpty() ? false : true;
+            
     }
 }
