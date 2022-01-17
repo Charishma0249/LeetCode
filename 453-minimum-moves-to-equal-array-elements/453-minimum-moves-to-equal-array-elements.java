@@ -4,8 +4,10 @@ class Solution {
         int min = Integer.MAX_VALUE;
         int moves = 0;
         
-        for(int i=0; i<nums.length; i++)
-            min = Math.min(nums[i], min);
+        for(int i=0; i<nums.length; i++) {
+            if(nums[i]<min)
+                min = nums[i];
+        }
         
         for(int i=0; i<nums.length; i++) {
             moves += Math.abs(nums[i]-min);
