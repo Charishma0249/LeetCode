@@ -1,6 +1,6 @@
 class Solution {
     public int firstUniqChar(String s) {
-        LinkedHashMap<Character, Integer> hm = new LinkedHashMap<>();
+        HashMap<Character, Integer> hm = new HashMap<>();
         
         for(int i=0; i<s.length(); i++) {
             char c = s.charAt(i);
@@ -12,11 +12,11 @@ class Solution {
             hm.put(c, count);
         }
         
-        for(Map.Entry<Character, Integer> entry : hm.entrySet()) {
+        for(int i=0; i<s.length(); i++) {
+            char c = s.charAt(i);
             
-            int count = entry.getValue();
-            if(count==1)
-                return s.indexOf(entry.getKey());
+            if(hm.get(c)==1)
+                return i;
         }
         
         return -1;
