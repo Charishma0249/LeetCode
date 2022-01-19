@@ -8,6 +8,7 @@ class Solution {
         
         Arrays.fill(dp, Integer.MAX_VALUE);
         dp[0] = 0;
+        Arrays.sort(coins);
         
         for(int i=1; i<=amount; i++) {
             
@@ -19,9 +20,9 @@ class Solution {
                         continue;
                     dp[i] = Math.min(dp[i], 1+dp[diff]);
                 }
+                else
+                    break;
             }
-            // if(dp[i]==Integer.MAX_VALUE)
-            //     dp[i] = -1;
         }
         
         return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
