@@ -18,21 +18,12 @@ class MyQueue {
     }
     
     public int pop() {
-        
-        while(!stk1.empty()) {
-           int n= stk1.pop();
-           stk2.push(n);
-        }
-        
+        transfer(stk1, stk2);
         return stk2.pop();
     }
     
     public int peek() {
-        while(!stk1.empty()) {
-           int n= stk1.pop();
-           stk2.push(n);
-        }
-        
+        transfer(stk1, stk2);
         return stk2.peek();
     }
     
@@ -40,6 +31,13 @@ class MyQueue {
         if(stk1.empty() && stk2.empty())
             return true;
         return false;
+    }
+    
+    public void transfer(Stack<Integer> stk1, Stack<Integer> stk2) {
+        while(!stk1.empty()) {
+           int n= stk1.pop();
+           stk2.push(n);
+        }
     }
 }
 
