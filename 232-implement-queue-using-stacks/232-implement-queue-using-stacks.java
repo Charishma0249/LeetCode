@@ -8,12 +8,7 @@ class MyQueue {
     }
     
     public void push(int x) {
-        if(stk1.empty() && !stk2.empty()) {
-            while(!stk2.empty()) {
-                int n = stk2.pop();
-                stk1.push(n);
-            }
-        }
+        transfer(stk2, stk1);
         stk1.push(x);
     }
     
