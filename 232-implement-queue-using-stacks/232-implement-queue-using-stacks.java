@@ -8,18 +8,19 @@ class MyQueue {
     }
     
     public void push(int x) {
-        transfer(stk2, stk1);
+        transfer(stk1, stk2);
         stk1.push(x);
+        transfer(stk2, stk1);
     }
     
     public int pop() {
-        transfer(stk1, stk2);
-        return stk2.pop();
+        
+        return stk1.pop();
     }
     
     public int peek() {
-        transfer(stk1, stk2);
-        return stk2.peek();
+        
+        return stk1.peek();
     }
     
     public boolean empty() {
