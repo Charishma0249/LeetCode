@@ -1,8 +1,7 @@
 class Solution {
     public String longestDiverseString(int a, int b, int c) {
         
-        int max = Integer.MIN_VALUE;
-        int n = 0, m, count=0;
+        int count=0;
         String res = "";
         PriorityQueue<Pair> pq = new PriorityQueue<>(new Comparator<>(){
             
@@ -40,7 +39,7 @@ class Solution {
                     res += p.c;
                     p.count--;
                     pq.add(new Pair(p.c, p.count));
-                    count=1;
+                    count++;
                 }
             }
             
@@ -70,48 +69,10 @@ class Solution {
             }
             
             
-//             else if(pq.size()>0 && res.length()>0 && res.charAt(res.length()-1)==p.c){
-                
-//                 Pair temp = pq.poll();
-//                 if(temp.count>1) {
-//                 res += temp.c;
-//                 temp.count--;
-//                 pq.add(new Pair(temp.c, temp.count));
-//                 }
-//             }
         }
         
         return res;
-//         if(a>b) {
-//             if(a>c) {
-//                 max = a;
-//                 n = a/2;
-//                 m = b+c;
-//             }
-//             else {
-//                 max = c;
-//                 n = c/2;
-//                 m = b+a;
-//             }
-            
-//             if(m<n)
-//                 return res;
-            
-//         }
-//         else{
-//             if(b>c) {
-//                 max = b;
-//                 n = b/2;
-//                 m = a+c;
-//             }
-//             else {
-//                 max = c;
-//                 n = c/2;
-//                 m = b+a;
-//             }
-//             if(m<n)
-//                 return res;
-//         }
+
         
         
     }
