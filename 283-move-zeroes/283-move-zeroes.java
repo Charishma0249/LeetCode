@@ -8,10 +8,7 @@ class Solution {
                     j++;
             }
             if(nums[i] == 0 && j<len && nums[j]!=0) {
-                // swap(nums, i, j);
-                int temp = nums[i];
-                nums[i] = nums[j];
-                nums[j] = temp;
+                swap(nums, i, j);
                 i++;
                 j++;
             }
@@ -23,12 +20,12 @@ class Solution {
         
     }
     
-//     public void swap(int[] nums, int i, int j) {
+    public void swap(int[] nums, int i, int j) {
         
-//         int temp = nums[i];
-//         nums[i] = nums[j];
-//         nums[j] = temp;
-//     }
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
 }
 
 // 0,1,0,3,12
