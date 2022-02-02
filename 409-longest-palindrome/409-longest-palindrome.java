@@ -17,11 +17,9 @@ class Solution {
             int val = entry.getValue();
             if(val%2!=0) {
                 co++;
-                ce += val-1;
+                ce--;
             }
-            else {
-                ce += val;
-            }
+            ce += val;
         }
         
         if(co>=1)
