@@ -22,8 +22,6 @@ class Solution {
             ce += val;
         }
         
-        if(co>=1)
-            res++;
-        return res+ce;
+        return (co>=1) ? res+ce+1 : res+ce;
     }
 }
