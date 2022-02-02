@@ -2,7 +2,6 @@ class Solution {
     public boolean canPermutePalindrome(String s) {
         
         HashMap<Character, Integer> hm = new HashMap<>();
-        int len = s.length();
         
         for(char c : s.toCharArray()) {
             int count =0;
