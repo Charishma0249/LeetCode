@@ -12,16 +12,13 @@ class Solution {
             hm.put(c, count+1);
         }
         
-        int co=0, ce=0;
+        int co=0;
         for(Map.Entry<Character, Integer> entry : hm.entrySet()) {
             
             int val = entry.getValue();
-            if(val%2!=0) {
+            if(val%2!=0) 
                 co++;
-                ce += val-1;
-            }
-            else
-                ce += val;
+            
         }
         
         if(co>1)
