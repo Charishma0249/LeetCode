@@ -20,10 +20,7 @@ class Solution {
             
         }
         
-        if(co>1)
-            return false;
-        
-        return true;
+        return co>1 ? false : true;
         
     }
 }
