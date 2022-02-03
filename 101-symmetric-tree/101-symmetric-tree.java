@@ -17,22 +17,10 @@ class Solution {
     int i=0;
     public boolean isSymmetric(TreeNode root) {
         ArrayList<Integer> all = new ArrayList<>();
-        ArrayList<Integer> alr = new ArrayList<>();
         dfsL(root.left, all);
         
-        
         return dfsR(root.right, all);
-        
-//         if(all.size()!=alr.size())
-//             return false;
-        
-//         for(int i=0; i<all.size(); i++) {
-//             // System.out.println(all.get(i) +" "+alr.get(i));
-//             if(all.get(i)!=alr.get(i))
-//                 return false;
-//         }
-        
-//         return true;
+
     }
     
     public void dfsL(TreeNode node, ArrayList<Integer> all) {
@@ -51,22 +39,14 @@ class Solution {
         
         boolean res1=true, res2=true;
         if(node==null) {
-            if(all.get(i)!=null) {
-                // System.out.println(all.get(i));
+            if(all.get(i)!=null) 
                 return false;
-            }
             return true;
         }
-        // System.out.println(node.val);
-        if(all.get(i)==null) {
-            // System.out.println("hey -- "+i);
+        
+        if(all.get(i)==null || all.get(i)!=node.val) 
             return false;
-        }
-        if(all.get(i)!=node.val) {
-            // System.out.println(all.get(i)+" " +node.val);
-            return false;
-        }
-        // System.out.println("Hi -- "+all.get(i)+" "+node.val);
+        
         i++;
         res1 = dfsR(node.right, all);
         i++;
