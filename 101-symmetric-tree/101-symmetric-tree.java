@@ -14,22 +14,25 @@
  * }
  */
 class Solution {
+    int i=0;
     public boolean isSymmetric(TreeNode root) {
         ArrayList<Integer> all = new ArrayList<>();
         ArrayList<Integer> alr = new ArrayList<>();
         dfsL(root.left, all);
-        dfsR(root.right, alr);
         
-        if(all.size()!=alr.size())
-            return false;
         
-        for(int i=0; i<all.size(); i++) {
-            // System.out.println(all.get(i) +" "+alr.get(i));
-            if(all.get(i)!=alr.get(i))
-                return false;
-        }
+        return dfsR(root.right, all);
         
-        return true;
+//         if(all.size()!=alr.size())
+//             return false;
+        
+//         for(int i=0; i<all.size(); i++) {
+//             // System.out.println(all.get(i) +" "+alr.get(i));
+//             if(all.get(i)!=alr.get(i))
+//                 return false;
+//         }
+        
+//         return true;
     }
     
     public void dfsL(TreeNode node, ArrayList<Integer> all) {
@@ -44,15 +47,31 @@ class Solution {
         dfsL(node.right, all);
     }
     
-    public void dfsR(TreeNode node, ArrayList<Integer> alr) {
+    public boolean dfsR(TreeNode node, ArrayList<Integer> all) {
         
+        boolean res1=true, res2=true;
         if(node==null) {
-            alr.add(null);
-            return ;
+            if(all.get(i)!=null) {
+                // System.out.println(all.get(i));
+                return false;
+            }
+            return true;
         }
         // System.out.println(node.val);
-        alr.add(node.val);
-        dfsR(node.right, alr);
-        dfsR(node.left, alr);
+        if(all.get(i)==null) {
+            // System.out.println("hey -- "+i);
+            return false;
+        }
+        if(all.get(i)!=node.val) {
+            // System.out.println(all.get(i)+" " +node.val);
+            return false;
+        }
+        // System.out.println("Hi -- "+all.get(i)+" "+node.val);
+        i++;
+        res1 = dfsR(node.right, all);
+        i++;
+        res2 = dfsR(node.left, all);
+        
+        return res1&&res2;
     }
 }
