@@ -41,12 +41,14 @@ class Solution {
             if(currNode.right!=null)
                 qu.add(currNode.right);
             
-            Node nextNode = qu.peek();
-            currNode.next = nextNode;
             
-            if(qu.peek()!=null) 
+            if(qu.peek()!=null) {
+                Node nextNode = qu.peek();
+                currNode.next = nextNode;
                 continue;
+            }
             
+            currNode.next = null;
             qu.poll();
             qu.add(null);
             
