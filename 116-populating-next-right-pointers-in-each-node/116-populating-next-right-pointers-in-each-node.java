@@ -36,9 +36,7 @@ class Solution {
             if(temp==null)
                 continue;
             
-            
             qu.add(temp.left);
-            
             qu.add(temp.right);
             
             if(qu.peek()!=null) {
