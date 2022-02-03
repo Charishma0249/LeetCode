@@ -36,10 +36,10 @@ class Solution {
             if(temp==null)
                 continue;
             
-            if(temp.left!=null)
-                qu.add(temp.left);
-            if(temp.right!=null)
-                qu.add(temp.right);
+            
+            qu.add(temp.left);
+            
+            qu.add(temp.right);
             
             if(qu.peek()!=null) {
                 Node nextNode = qu.peek();
