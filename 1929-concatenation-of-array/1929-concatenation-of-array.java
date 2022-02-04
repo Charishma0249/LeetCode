@@ -6,8 +6,8 @@ class Solution {
         
         int k=-1;
         for(int j=0; j<len; j++) {
-            k++;
-            res[k] = nums[j];
+            // k++;
+            res[++k] = nums[j];
             res[len+k] = nums[j];
         }
         
