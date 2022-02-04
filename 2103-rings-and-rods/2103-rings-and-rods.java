@@ -27,10 +27,8 @@ class Solution {
             int count =0;
             
             for(int i=0; i<3; i++) {
-                if(colors[i]<1)
-                    break;
-                
-                count++;
+                if(colors[i]>=1)
+                    count++;
             }
             if(count==3)
                 res++;
