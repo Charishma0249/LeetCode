@@ -14,7 +14,12 @@ class Solution {
             int val = entry.getValue();
             if(val==1)
                 continue;
-            int fact = ((val*(val-1))/2);
+            int fact=0;
+            if(val%2==0)
+                fact = (val/2)*(val-1);
+            else
+                fact = val*((val-1)/2);
+            
             res += fact;
         }
         return res;
