@@ -5,11 +5,12 @@ class Solution {
         int[] res = new int[2*len];
         
         int k=-1;
-        for(int i=0; i<2; i++) {
-            for(int j=0; j<len; j++) {
-                res[++k] = nums[j];
-            }
+        for(int j=0; j<len; j++) {
+            k++;
+            res[k] = nums[j];
+            res[len+k] = nums[j];
         }
+        
         
         return res;
     }
