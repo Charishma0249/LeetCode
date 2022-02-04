@@ -1,8 +1,6 @@
 class Solution {
     PriorityQueue<String> pq;
-    List<String> al;
     public String longestWord(String[] words) {
-        al = new ArrayList<>();
         pq = new PriorityQueue<>(new Comparator<>(){
             
             @Override
@@ -22,31 +20,20 @@ class Solution {
             }
         });
         
-        // System.out.println("hey");
         Trie root = new Trie();
-        // Arrays.sort(words);
         for(int i=0; i<words.length; i++) {
-            // System.out.println("hey");
             String s = words[i];
             Trie trie = root;
-            int count=0;
-             // System.out.println("word = "+words[i]);
             for(int j=0; j<s.length(); j++) {
-                // System.out.println(s.charAt(j));
                 int c = s.charAt(j)-'a';
                 Trie next = new Trie();
                 if(trie.alp[c]!=null)
                     next = trie.alp[c];
                 
-                // if(next.eof==0)
-                //     count++;
                 trie.alp[c] = next;
                 trie = next;
             }
             trie.eof = 1;
-             // System.out.println(count);
-            // if(count==1)
-            //     pq.add(s);
         }
         
         findPrefix(root, new StringBuilder());
