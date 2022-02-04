@@ -1,26 +1,27 @@
 class Solution {
     int idx=-1;
+    List<Integer> res = new ArrayList<>();
     public List<Integer> targetIndices(int[] nums, int target) {
         
         int len = nums.length;
-        List<Integer> res = new ArrayList<>();
+        
         Arrays.sort(nums);
         
         binSearch(nums, target, 0, len);
-        if(idx==-1)
-            return res;
+        // if(idx==-1)
+        //     return res;
         
         int temp = idx;
          // System.out.println(idx);
-        while(idx>=0 && nums[idx]==target) {
-            res.add(idx);
-            idx--;
-        }
-        temp++;
-        while(temp<len && nums[temp]==target) {
-            res.add(temp);
-            temp++;
-        }
+        // while(idx>=0 && nums[idx]==target) {
+        //     res.add(idx);
+        //     idx--;
+        // }
+        // temp++;
+        // while(temp<len && nums[temp]==target) {
+        //     res.add(temp);
+        //     temp++;
+        // }
         
         Collections.sort(res);
         return res;
@@ -36,8 +37,12 @@ class Solution {
             binSearch(nums, target, start, mid);
         else if(target>nums[mid])
             binSearch(nums, target, mid+1, end);
-        else
-            idx = mid;
+        else {
+            // if(!res.contains(mid))
+            res.add(mid);
+            binSearch(nums, target, start, mid);
+            binSearch(nums, target, mid+1, end);
+        }
         
     }
 }
