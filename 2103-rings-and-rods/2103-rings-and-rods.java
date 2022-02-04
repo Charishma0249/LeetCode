@@ -25,11 +25,12 @@ class Solution {
         for(Map.Entry<Integer, int[]> entry : hm.entrySet()) {
             int[] colors = entry.getValue();
             int count =0;
-            // System.out.println(entry.getKey());
+            
             for(int i=0; i<3; i++) {
-                // System.out.println(colors[i]);
-                if(colors[i]>=1)
-                    count++;
+                if(colors[i]<1)
+                    break;
+                
+                count++;
             }
             if(count==3)
                 res++;
