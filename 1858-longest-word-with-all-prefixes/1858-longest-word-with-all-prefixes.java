@@ -24,7 +24,7 @@ class Solution {
         
         // System.out.println("hey");
         Trie root = new Trie();
-        Arrays.sort(words);
+        // Arrays.sort(words);
         for(int i=0; i<words.length; i++) {
             // System.out.println("hey");
             String s = words[i];
@@ -35,49 +35,47 @@ class Solution {
                 // System.out.println(s.charAt(j));
                 int c = s.charAt(j)-'a';
                 Trie next = new Trie();
-                if(trie.alp[c]!=0)
-                    next = trie.next;
+                if(trie.alp[c]!=null)
+                    next = trie.alp[c];
                 
-                if(next.eof==0)
-                    count++;
-                trie.alp[c] = 1;
-                trie.next = next;
-                trie = trie.next;
+                // if(next.eof==0)
+                //     count++;
+                trie.alp[c] = next;
+                trie = next;
             }
             trie.eof = 1;
              // System.out.println(count);
-            if(count==1)
-                pq.add(s);
+            // if(count==1)
+            //     pq.add(s);
         }
         
-        // findPrefix(root, "");
+        findPrefix(root, new StringBuilder());
         
         return (pq.isEmpty()) ? "" : pq.poll(); 
     }
     
-//     public void findPrefix(Trie trie, String s) {
+    public void findPrefix(Trie trie, StringBuilder sb) {
         
-//         for(int i=0; i<26; i++) {
-//             if(trie.alp[i]==1) {
-//                 if(trie.next.eof==1) {
-//                     s += 'a'+i;
-//                     if(!al.isEmpty())
-//                         al.set(al.size()-1, s);
-//                     else
-//                         al.add(s);
-//                     findPrefix(trie.next);
-                    
-//                 }
-//                 else
-//             }
-//         }
-//     }
+        for(int i=0; i<26; i++) {
+            if(trie.alp[i]!=null) {
+                // System.out.println(i);
+                if(trie.alp[i].eof==1) {
+                    // s += (char)('a'+i);
+                    sb.append((char)('a'+i));
+                    // System.out.println(s);
+                    pq.add(sb.toString());
+                    findPrefix(trie.alp[i], sb);
+                    sb.deleteCharAt(sb.length()-1);
+                }
+                
+            }
+        }
+    }
 }
 
 public class Trie {
-    int[] alp = new int[26];
+    Trie[] alp = new Trie[26];
     int eof = 0;
-    Trie next;
     
     public Trie() {
         
