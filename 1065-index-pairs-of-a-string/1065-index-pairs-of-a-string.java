@@ -20,19 +20,16 @@ class Solution {
             }
             
         });
+        
         for(int i=0; i<words.length; i++) {
             String word = words[i];
             int j=0;
             int len = word.length();
             while(j+len<=text.length()) {
-                // System.out.println(j);
-                String temp = text.substring(j, text.length());
-                 int idx = temp.indexOf(word);
+                int idx = text.indexOf(word, j);
                 if(idx!=-1) {
-                    int in = j+idx;
-                     // System.out.println(" word = "+word +" idx = "+in);
-                    pq.add(new Pair(in, in+len-1));
-                    j = in+1;
+                    pq.add(new Pair(idx, idx+len-1));
+                    j = idx+1;
                 }
                 else
                     break;
