@@ -12,6 +12,8 @@ class Solution {
         
         for(Map.Entry<Integer, Integer> entry : hm.entrySet()) {
             int val = entry.getValue();
+            if(val==1)
+                continue;
             int fact = ((val*(val-1))/2);
             res += fact;
         }
