@@ -13,9 +13,7 @@ class Solution {
     }
     
     public void binSearch(int[] nums, int target, int start, int end) {
-        
-        // if(start==end && nums[start]==target)
-        //     res.add(start);
+       
         if(start>=end)
             return ;
         
@@ -27,11 +25,6 @@ class Solution {
             binSearch(nums, target, start, mid);
         if(target>=nums[mid])
             binSearch(nums, target, mid+1, end);
-        // else {
-        //     res.add(mid);
-        //     binSearch(nums, target, start, mid);
-        //     binSearch(nums, target, mid+1, end);
-        // }
         
     }
 }
