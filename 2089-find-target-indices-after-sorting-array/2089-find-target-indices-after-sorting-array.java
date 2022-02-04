@@ -13,18 +13,20 @@ class Solution {
     }
     
     public void binSearch(int[] nums, int target, int start, int end) {
-       
+        
         if(start>=end)
             return ;
         
         int mid = (start+end)/2;
-        if(nums[mid]==target)
-            res.add(mid);
-        
-        if(target<=nums[mid])
+        if(target<nums[mid])
             binSearch(nums, target, start, mid);
-        if(target>=nums[mid])
+        else if(target>nums[mid])
             binSearch(nums, target, mid+1, end);
+        else {
+            res.add(mid);
+            binSearch(nums, target, start, mid);
+            binSearch(nums, target, mid+1, end);
+        }
         
     }
 }
