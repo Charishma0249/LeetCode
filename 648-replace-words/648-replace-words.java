@@ -18,15 +18,13 @@ class Solution {
             trie.eof = true;
         }
         res = sentence.split("\\s+");
-        // StringBuilder sb = new StringBuilder();
-        String sb = "";
-        sb = replace(res, root, sb);
-        // System.out.println(sb);
+        StringBuilder sb = new StringBuilder();
+        replace(res, root, sb);
         return sb.substring(0, sb.length()-1);
     
     }
     
-    public String replace(String[] res, Trie root, String sb) {
+    public void replace(String[] res, Trie root, StringBuilder sb) {
         
         for(String s : res) {
             // System.out.println(s);
@@ -37,30 +35,23 @@ class Solution {
                 if(trie.alp[n]!=null) {
                     if(trie.alp[n].eof==true) {
                         // res[i] = s.substring(0, j+1);
-                        sb += s.substring(0, j+1);
-                        sb += " ";
-                        // sb.append(s.substring(0, j+1)+" ");
+                        sb.append(s.substring(0, j+1)+" ");
                         break;
                     }
                         
                     trie = trie.alp[n];
                 }
                 else {
-                    sb += s;
-                    sb += " ";
-                    // sb.append(s + " ");
-                    // return sb;
+                    sb.append(s + " ");
                     break;
                 }
                 j++;
             }
-            if(j==s.length()){
-                sb += s;
-                sb += " ";
-            // return sb;
-            }
+            if(j==s.length())
+                sb.append(s +" ");
+            
+                
         }
-        return sb;
     }
 }
 
