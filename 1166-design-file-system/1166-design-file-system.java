@@ -11,7 +11,7 @@ class FileSystem {
         int j=0;       
          // System.out.println(str.length);
         for(String s : str) {
-            if(s.equals("") || s.equals(" ")) {
+            if(s.equals("")) {
                 j++;
                 continue;
             }
