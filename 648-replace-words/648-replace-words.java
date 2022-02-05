@@ -19,7 +19,7 @@ class Solution {
                 trie.alp[n] = next;
                 trie = next;
             }
-            trie.eof = 1;
+            trie.eof = true;
         }
         res = sentence.split("\\s+");
         StringBuilder sb = new StringBuilder();
@@ -38,7 +38,7 @@ class Solution {
                 char c = s.charAt(j);
                 int n = c-'a';
                 if(trie.alp[n]!=null) {
-                    if(trie.alp[n].eof==1) {
+                    if(trie.alp[n].eof==true) {
                         // res[i] = s.substring(0, j+1);
                         sb.append(s.substring(0, j+1));
                         sb.append(" ");
@@ -65,7 +65,7 @@ class Solution {
 class Trie{
     
     Trie[] alp = new Trie[26];
-    int eof;
+    boolean eof;
     
     Trie(){}
 }
