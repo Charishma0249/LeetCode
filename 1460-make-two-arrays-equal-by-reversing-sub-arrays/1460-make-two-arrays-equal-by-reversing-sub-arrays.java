@@ -5,20 +5,12 @@ class Solution {
         int alen = arr.length;
         if(tlen!=alen)
             return false; 
-        HashMap<Integer, Integer> hm = new HashMap<>();
+        Arrays.sort(target);
+        Arrays.sort(arr);
         
-        for(int i : target) {
-            int count =0;
-            if(hm.containsKey(i))
-                count = hm.get(i);
-            hm.put(i, count+1);
-            
-        }
-        
-        for(int i:arr) {
-            if(!hm.containsKey(i) || hm.containsKey(i) && hm.get(i)<=0)
+        for(int i=0; i<tlen; i++) {
+            if(target[i]!=arr[i])
                 return false;
-            hm.put(i, hm.get(i)-1);
         }
         
         return true;
