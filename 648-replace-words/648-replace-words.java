@@ -18,40 +18,49 @@ class Solution {
             trie.eof = true;
         }
         res = sentence.split("\\s+");
-        StringBuilder sb = new StringBuilder();
-        replace(res, root, sb);
+        // StringBuilder sb = new StringBuilder();
+        String sb = "";
+        sb = replace(res, root, sb);
+        // System.out.println(sb);
         return sb.substring(0, sb.length()-1);
     
     }
     
-    public void replace(String[] res, Trie root, StringBuilder sb) {
+    public String replace(String[] res, Trie root, String sb) {
         
         for(String s : res) {
             // System.out.println(s);
             Trie trie = root;
             int j=0;
-            for(j=0; j<s.length(); j++) {
-                char c = s.charAt(j);
+            for(char c:s.toCharArray()) {
                 int n = c-'a';
                 if(trie.alp[n]!=null) {
                     if(trie.alp[n].eof==true) {
                         // res[i] = s.substring(0, j+1);
-                        sb.append(s.substring(0, j+1)+" ");
+                        sb += s.substring(0, j+1);
+                        sb += " ";
+                        // sb.append(s.substring(0, j+1)+" ");
                         break;
                     }
                         
                     trie = trie.alp[n];
                 }
                 else {
-                    sb.append(s + " ");
+                    sb += s;
+                    sb += " ";
+                    // sb.append(s + " ");
+                    // return sb;
                     break;
                 }
+                j++;
             }
-            if(j==s.length())
-                sb.append(s +" ");
-            
-                
+            if(j==s.length()){
+                sb += s;
+                sb += " ";
+            // return sb;
+            }
         }
+        return sb;
     }
 }
 
