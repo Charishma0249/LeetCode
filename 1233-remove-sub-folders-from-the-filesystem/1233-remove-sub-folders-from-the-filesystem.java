@@ -9,15 +9,10 @@ class Solution {
             String s = folder[i];
             
             String prev = res.get(res.size()-1);
-            if(s.indexOf(prev)==-1)
+            int n = s.indexOf(prev);
+            if(n==-1 || n!=0 || s.charAt(n+prev.length())!='/')
                 res.add(s);
-            else {
-                int n = s.indexOf(prev);
-                if(n!=0)
-                    res.add(s);
-                if(s.charAt(n+prev.length())!='/')
-                    res.add(s);
-            }
+            
         }
         
         return res;
