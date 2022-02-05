@@ -26,11 +26,14 @@ class Solution {
 //             if(entry.getValue()==1)
 //                 res += entry.getKey();
 //         }
-        
+        /* ------ 3rd way ------*/
         int[] n = new int[101];
-        for(int i=0; i<nums.length; i++)
+        int max = Integer.MIN_VALUE;
+        for(int i=0; i<nums.length; i++) {
             n[nums[i]]++;
-        for(int i=0; i<100; i++) {
+            max = Math.max(max, nums[i]);
+        }
+        for(int i=0; i<max; i++) {
             if(n[i+1]==1)
                 res+=i+1;
         }
