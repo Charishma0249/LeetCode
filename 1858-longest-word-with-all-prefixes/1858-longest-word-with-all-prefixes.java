@@ -29,22 +29,18 @@ class Solution {
         int count=0;
         for(int i=0; i<26; i++) {
             if(trie.alp[i]!=null) {
-                // System.out.println(i);
                 if(trie.alp[i].eof==1) {
-                    // s += (char)('a'+i);
                     sb.append((char)('a'+i));
-                    // System.out.println(s);
-                    // pq.add(sb.toString());
                     findPrefix(trie.alp[i], sb);
                     sb.deleteCharAt(sb.length()-1);
                 }
                
                 
             }
-            else if(count!=1 && trie.alp[i]==null && trie.eof==1){
-                    String s = sb.toString();
-                    if(res.length()<s.length())
-                        res = s;
+            else if(count!=1 && trie.eof==1){
+                    
+                    if(res.length()<sb.length())
+                        res = sb.toString();
                     
                     count++;
                 }
