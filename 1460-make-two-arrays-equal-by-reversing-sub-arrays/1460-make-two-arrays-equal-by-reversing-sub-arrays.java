@@ -3,13 +3,18 @@ class Solution {
         
         int tlen = target.length;
         int alen = arr.length;
+        int[] n = new int[1001];
+        
         if(tlen!=alen)
             return false; 
-        Arrays.sort(target);
-        Arrays.sort(arr);
         
-        for(int i=0; i<tlen; i++) {
-            if(target[i]!=arr[i])
+        for(int i : target)
+            n[i]++;
+        for(int i : arr)
+            n[i]--;
+        
+        for(int i : n){
+            if(i!=0)
                 return false;
         }
         
