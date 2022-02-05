@@ -1,17 +1,16 @@
 class Solution {
     public String toGoatLatin(String sentence) {
-        HashSet<Character> hs = new HashSet<>();
-        // (Arrays.asList('a','e','o','u','i','A','E','O','U','I'));
-        hs.add('a');
-        hs.add('e');
-        hs.add('i');
-        hs.add('o');
-        hs.add('u');
-        hs.add('A');
-        hs.add('E');
-        hs.add('I');
-        hs.add('O');
-        hs.add('U');
+        HashSet<Character> hs = new HashSet<>(Arrays.asList('a','e','o','u','i','A','E','O','U','I'));
+        // hs.add('a');
+        // hs.add('e');
+        // hs.add('i');
+        // hs.add('o');
+        // hs.add('u');
+        // hs.add('A');
+        // hs.add('E');
+        // hs.add('I');
+        // hs.add('O');
+        // hs.add('U');
         String[] str = sentence.split("\\s+");
         StringBuilder res = new StringBuilder();
         
