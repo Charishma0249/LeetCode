@@ -59,7 +59,7 @@ class Solution {
                
                 
             }
-            else if(trie.alp[i]==null && trie.eof==1){
+            else if(count!=1 && trie.alp[i]==null && trie.eof==1){
                     String s = sb.toString();
                     // System.out.println(s);
                     if(res.length()<s.length())
@@ -68,6 +68,7 @@ class Solution {
                         if(res.compareToIgnoreCase(s)>0)
                             res = s;
                     }
+                count++;
                 }
             // else
             //     count++;
