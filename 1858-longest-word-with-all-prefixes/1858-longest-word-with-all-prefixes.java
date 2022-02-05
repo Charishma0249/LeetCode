@@ -1,5 +1,6 @@
 class Solution {
     PriorityQueue<String> pq;
+    String res = "";
     public String longestWord(String[] words) {
         pq = new PriorityQueue<>(new Comparator<>(){
             
@@ -38,11 +39,12 @@ class Solution {
         
         findPrefix(root, new StringBuilder());
         
-        return (pq.isEmpty()) ? "" : pq.poll(); 
+        // return (pq.isEmpty()) ? "" : pq.poll(); 
+        return res;
     }
     
     public void findPrefix(Trie trie, StringBuilder sb) {
-        
+        int count=0;
         for(int i=0; i<26; i++) {
             if(trie.alp[i]!=null) {
                 // System.out.println(i);
@@ -54,14 +56,28 @@ class Solution {
                     findPrefix(trie.alp[i], sb);
                     sb.deleteCharAt(sb.length()-1);
                 }
+               
                 
             }
-            else{
-                // System.out.println(sb.toString());
-                pq.add(sb.toString());
-            }
+            else if(trie.alp[i]==null && trie.eof==1){
+                    String s = sb.toString();
+                    // System.out.println(s);
+                    if(res.length()<s.length())
+                        res = s;
+                    else if(res.length()==s.length()) {
+                        if(res.compareToIgnoreCase(s)>0)
+                            res = s;
+                    }
+                }
+            // else
+            //     count++;
                 
         }
+        
+        // if(count==26) {
+        //     System.out.println(sb.toString());
+        //     pq.add(sb.toString());
+        // }
     }
 }
 
