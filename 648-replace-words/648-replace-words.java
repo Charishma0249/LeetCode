@@ -36,23 +36,20 @@ class Solution {
                 if(trie.alp[n]!=null) {
                     if(trie.alp[n].eof==true) {
                         // res[i] = s.substring(0, j+1);
-                        sb.append(s.substring(0, j+1));
-                        sb.append(" ");
+                        sb.append(s.substring(0, j+1)+" ");
                         break;
                     }
                         
                     trie = trie.alp[n];
                 }
                 else {
-                    sb.append(s);
-                    sb.append(" ");
+                    sb.append(s + " ");
                     break;
                 }
             }
-            if(j==s.length()){
-                sb.append(s);
-                sb.append(" ");
-            }
+            if(j==s.length())
+                sb.append(s +" ");
+            
                 
         }
     }
