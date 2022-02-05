@@ -64,10 +64,10 @@ class Solution {
                     // System.out.println(s);
                     if(res.length()<s.length())
                         res = s;
-                    else if(res.length()==s.length()) {
-                        if(res.compareToIgnoreCase(s)>0)
-                            res = s;
-                    }
+                    // else if(res.length()==s.length()) {
+                    //     if(res.compareToIgnoreCase(s)>0)
+                    //         res = s;
+                    // }
                 count++;
                 }
             // else
