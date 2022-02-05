@@ -1,25 +1,7 @@
 class Solution {
-    PriorityQueue<String> pq;
     String res = "";
     public String longestWord(String[] words) {
-        pq = new PriorityQueue<>(new Comparator<>(){
-            
-            @Override
-            public int compare(String s1, String s2){
-                
-                if(s2.length()>s1.length())
-                    return 1;
-                else if(s2.length()<s1.length())
-                    return -1;
-                else {
-                    if(s1.compareToIgnoreCase(s2)>0)
-                        return 1;
-                    else if(s1.compareToIgnoreCase(s2)<0)
-                        return -1;
-                    return 0;
-                }
-            }
-        });
+       
         
         Trie root = new Trie();
         for(int i=0; i<words.length; i++) {
@@ -61,24 +43,14 @@ class Solution {
             }
             else if(count!=1 && trie.alp[i]==null && trie.eof==1){
                     String s = sb.toString();
-                    // System.out.println(s);
                     if(res.length()<s.length())
                         res = s;
-                    // else if(res.length()==s.length()) {
-                    //     if(res.compareToIgnoreCase(s)>0)
-                    //         res = s;
-                    // }
-                count++;
+                    
+                    count++;
                 }
-            // else
-            //     count++;
                 
         }
-        
-        // if(count==26) {
-        //     System.out.println(sb.toString());
-        //     pq.add(sb.toString());
-        // }
+    
     }
 }
 
@@ -89,9 +61,4 @@ public class Trie {
     public Trie() {
         
     }
-    // public Trie(int[] alp, int eof, Trie trie){
-    //     this.alp = alp;
-    //     this.eof = eof;
-    //     this.next = trie;
-    // }
 }
