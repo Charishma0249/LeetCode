@@ -50,12 +50,17 @@ class Solution {
                     // s += (char)('a'+i);
                     sb.append((char)('a'+i));
                     // System.out.println(s);
-                    pq.add(sb.toString());
+                    // pq.add(sb.toString());
                     findPrefix(trie.alp[i], sb);
                     sb.deleteCharAt(sb.length()-1);
                 }
                 
             }
+            else{
+                // System.out.println(sb.toString());
+                pq.add(sb.toString());
+            }
+                
         }
     }
 }
