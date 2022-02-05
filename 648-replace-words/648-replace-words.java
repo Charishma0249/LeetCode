@@ -3,34 +3,30 @@ class Solution {
     public String replaceWords(List<String> dictionary, String sentence) {
         
         Trie root = new Trie();
-        for(int i=0; i<dictionary.size(); i++) {
-            
-            String s = dictionary.get(i);
+        for(String s:dictionary) {
             
             Trie trie = root;
             
-            for(int j=0; j<s.length(); j++) {
-                char c = s.charAt(j);
+            for(char c : s.toCharArray()) {
                 int n= c-'a';
-                Trie next = new Trie();
-                if(trie.alp[n]!=null){
-                    next = trie.alp[n];
+                
+                if(trie.alp[n]==null){
+                    trie.alp[n] = new Trie();
                 }
-                trie.alp[n] = next;
-                trie = next;
+                trie = trie.alp[n];
             }
             trie.eof = true;
         }
         res = sentence.split("\\s+");
         StringBuilder sb = new StringBuilder();
         replace(res, root, sb);
-        return sb.substring(0, sb.length()-1).toString();
+        return sb.substring(0, sb.length()-1);
+    
     }
     
     public void replace(String[] res, Trie root, StringBuilder sb) {
         
-        for(int i=0; i<res.length; i++) {
-            String s = res[i];
+        for(String s : res) {
             // System.out.println(s);
             Trie trie = root;
             int j=0;
