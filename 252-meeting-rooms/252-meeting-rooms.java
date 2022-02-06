@@ -9,14 +9,15 @@ class Solution {
                     return 1;
                 else if(a1[0]<a2[0])
                     return -1;
-                else {
-                    if(a1[1]>a2[1])
-                        return 1;
-                    else if(a1[1]<a2[1])
-                        return -1;
+                return 0;
+//                 else {
+//                     if(a1[1]>a2[1])
+//                         return 1;
+//                     else if(a1[1]<a2[1])
+//                         return -1;
                     
-                    return 0;
-                }
+//                     return 0;
+//                 }
             }
         });
         
