@@ -22,7 +22,9 @@ class Solution {
     }
     
     public void dfs(TreeNode node, TreeNode dest, HashSet<TreeNode> hs, boolean flag){
-        if(node==null || node==dest){
+        if(node==null)
+            return ;
+        if(node==dest){
             if(!flag)
                 hs.add(node);
             else if(flag && hs.contains(node))
