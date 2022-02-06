@@ -17,19 +17,32 @@ class Solution {
         // HashSet<TreeNode> hs = new HashSet<>();
         // dfs(root, p, hs, false);
         // dfs(root, q, hs, true);
-        return dfs(root, p, q);
         // return value;
-    }
-    
-    public TreeNode dfs(TreeNode node, TreeNode p, TreeNode q){
+        // return dfs(root, p, q);
         
-        if(node.val>p.val && node.val>q.val)
-            return dfs(node.left, p, q);
-        else if(node.val<p.val && node.val<q.val)
-            return dfs(node.right, p, q);
+        TreeNode node = root;
+        boolean flag = true;
+        while(flag){
+            if(node.val>p.val && node.val>q.val)
+                node = node.left;
+            else if(node.val<p.val && node.val<q.val)
+                node = node.right;
+            else
+                flag = false;
+        }
         
         return node;
     }
+    
+//     public TreeNode dfs(TreeNode node, TreeNode p, TreeNode q){
+        
+//         if(node.val>p.val && node.val>q.val)
+//             return dfs(node.left, p, q);
+//         else if(node.val<p.val && node.val<q.val)
+//             return dfs(node.right, p, q);
+        
+//         return node;
+//     }
     
 //     public void dfs(TreeNode node, TreeNode dest, HashSet<TreeNode> hs, boolean flag){
 //         if(node==null)
