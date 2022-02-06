@@ -9,14 +9,10 @@ class Solution {
             for(int i=1; i<s.length(); i++){
                 int diff = s.charAt(i)-s.charAt(i-1);
                 if(diff<0)
-                    // sb += (int)(26+diff);
                     sb.append((int)(26+diff));
                 else
-                    // sb+=diff;
                     sb.append(diff);
-                // sb+='*';
                 sb.append('*');
-                // sb += s.charAt(i)-s.charAt(i-1);;
             }
              // System.out.println(s+" "+sb);
             List<String> ls = new ArrayList<>();
