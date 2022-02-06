@@ -5,23 +5,27 @@ class Solution {
         
         for(String s:strings) {
             
-            String sb = "";
+            StringBuilder sb = new StringBuilder();
             for(int i=1; i<s.length(); i++){
                 int diff = s.charAt(i)-s.charAt(i-1);
                 if(diff<0)
-                    sb += (int)(26+diff);
+                    // sb += (int)(26+diff);
+                    sb.append((int)(26+diff));
                 else
-                    sb+=diff;
-                sb+='*';
+                    // sb+=diff;
+                    sb.append(diff);
+                // sb+='*';
+                sb.append('*');
                 // sb += s.charAt(i)-s.charAt(i-1);;
             }
              // System.out.println(s+" "+sb);
-            List<String> ls = new ArrayList<>(); 
-            if(hm.containsKey(sb))
-                ls = hm.get(sb);
+            List<String> ls = new ArrayList<>();
+            String temp = sb.toString();
+            if(hm.containsKey(temp))
+                ls = hm.get(temp);
                 
             ls.add(s);
-            hm.put(sb, ls);
+            hm.put(temp, ls);
         }
         
         for(Map.Entry<String, List<String>> entry : hm.entrySet()){
