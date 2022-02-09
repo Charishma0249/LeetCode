@@ -14,14 +14,7 @@ class MinStack {
     
     public void pop() {
         int val = al.get(al.size()-1);
-        // System.out.println(val);
-        // System.out.println("size = " +pq.size());
         pq.remove(val);
-        // Iterator itr = pq.iterator();
-        // System.out.println("size = " +pq.size());
-        // while(itr.hasNext()){
-        //     System.out.println(itr.next());
-        // }
         al.remove(al.size()-1);
     }
     
