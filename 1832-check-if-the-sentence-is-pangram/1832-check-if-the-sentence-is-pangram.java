@@ -1,15 +1,12 @@
 class Solution {
     public boolean checkIfPangram(String sentence) {
-        HashMap<Character, Integer> hm = new HashMap<>();
+        HashSet<Character> hs = new HashSet();
         
         for(char c:sentence.toCharArray()){
-            int count =0;
-            if(hm.containsKey(c))
-                count = hm.get(c);
-            
-            hm.put(c, count+1);
+           
+            hs.add(c);
         }
         
-        return (hm.size()==26) ? true : false;
+        return (hs.size()==26) ? true : false;
     }
 }
