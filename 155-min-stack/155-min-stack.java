@@ -1,21 +1,29 @@
 class MinStack {
 
     ArrayList<Integer> al;
-    PriorityQueue<Integer> pq = new PriorityQueue<>();
-    
+    // PriorityQueue<Integer> pq = new PriorityQueue<>();
+    int min = Integer.MAX_VALUE;
     public MinStack() {
         al = new ArrayList<>();
     }
     
     public void push(int val) {
-        pq.add(val);
+        // pq.add(val);
         al.add(val);
+        min = Math.min(min, val);
     }
     
     public void pop() {
         int val = al.get(al.size()-1);
-        pq.remove(val);
+        // pq.remove(val);
         al.remove(al.size()-1);
+        if(val==min){
+            min = Integer.MAX_VALUE;
+            for(int i=0; i<al.size(); i++){
+                min = Math.min(min, al.get(i));
+            }
+        }
+        
     }
     
     public int top() {
@@ -23,7 +31,7 @@ class MinStack {
     }
     
     public int getMin() {
-        return pq.peek();
+        return min;
     }
 }
 
