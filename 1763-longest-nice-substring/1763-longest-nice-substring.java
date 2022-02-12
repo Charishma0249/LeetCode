@@ -27,11 +27,12 @@ class Solution {
             // if(res.length()<sb.length()){
             //     res = sb;
             // }
-            findSubstring(s, i+1, endIdx, new StringBuilder());
             findSubstring(s, startIdx, i, new StringBuilder());
+            findSubstring(s, i+1, endIdx, new StringBuilder());
+            
             break;
         }
-        if(i==endIdx && res.length()<=sb.length()){
+        if(i==endIdx && res.length()<sb.length()){
             // System.out.println()
                 res = sb;
             }
