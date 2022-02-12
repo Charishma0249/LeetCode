@@ -3,9 +3,9 @@ class Solution {
         Arrays.sort(nums);
         int min = Integer.MAX_VALUE;
         
-        for(int i=0; i+k-1<nums.length; i++){
+        for(int i=0, j= i+k-1; j<nums.length; i++, j++){
             
-            int diff = nums[i+k-1]-nums[i];
+            int diff = nums[j]-nums[i];
             
             min = Math.min(diff, min);
             // i = i+k;
