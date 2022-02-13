@@ -8,7 +8,7 @@ class Solution {
         hm.put(s.charAt(0), 0);
         int i,j;
         
-        for(i=0, j=1; j<s.length(); ) {
+        for(i=0, j=1; j<len; ) {
             
             char cj = s.charAt(j);
             if(hm.containsKey(cj) && hm.get(cj)>=i){
@@ -19,7 +19,7 @@ class Solution {
             hm.put(cj, j);
             j++;
         }
-        if(j==s.length())
+        if(j==len)
             max = Math.max(max, j-i);
         return max == Integer.MIN_VALUE ? 1 : max;
     }
