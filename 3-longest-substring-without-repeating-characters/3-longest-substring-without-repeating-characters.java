@@ -5,10 +5,10 @@ class Solution {
         int max = Integer.MIN_VALUE;
         if(len==0)
             return 0;
-        hm.put(s.charAt(0), 0);
+        // hm.put(s.charAt(0), 0);
         int i,j;
         
-        for(i=0, j=1; j<len; ) {
+        for(i=0, j=0; j<len; ) {
             
             char cj = s.charAt(j);
             if(hm.containsKey(cj) && hm.get(cj)>=i){
