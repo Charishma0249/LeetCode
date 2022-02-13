@@ -16,6 +16,8 @@ class Solution {
                 i=hm.get(cj);
                 i++;
             }
+            if(max>len-i)
+                break;
             hm.put(cj, j);
             j++;
         }
