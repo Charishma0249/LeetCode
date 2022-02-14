@@ -3,18 +3,20 @@ public class Codec {
     
     // Encodes a list of strings to a single string.
     public String encode(List<String> strs) {
-        StringBuilder sb = new StringBuilder();
+        // StringBuilder sb = new StringBuilder();
+        int hc=0;
         for(int i=0; i<strs.size(); i++){
-            sb.append(strs.get(i));
+            // sb.append(strs.get(i));
+            hc = (hc+strs.get(i).hashCode())%(100000007);
         }
-        String res = sb.toString();
-        hm.put(res.hashCode(), strs);
+        String res = String.valueOf(hc);
+        hm.put(hc, strs);
         return res;
     }
 
     // Decodes a single string to a list of strings.
     public List<String> decode(String s) {
-        return hm.get(s.hashCode());
+        return hm.get(Integer.valueOf(s));
     }
 }
 
