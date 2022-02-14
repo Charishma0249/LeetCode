@@ -7,9 +7,9 @@ public class Codec {
         for(int i=0; i<strs.size(); i++){
             sb.append(strs.get(i));
         }
-        
-        hm.put(sb.toString().hashCode(), strs);
-        return sb.toString();
+        String res = sb.toString();
+        hm.put(res.hashCode(), strs);
+        return res;
     }
 
     // Decodes a single string to a list of strings.
