@@ -1,5 +1,5 @@
 public class Codec {
-    HashMap<String, List<String>> hm = new HashMap<>();
+    HashMap<Integer, List<String>> hm = new HashMap<>();
     
     // Encodes a list of strings to a single string.
     public String encode(List<String> strs) {
@@ -8,13 +8,13 @@ public class Codec {
             sb.append(strs.get(i));
         }
         
-        hm.put(sb.toString(), strs);
+        hm.put(sb.toString().hashCode(), strs);
         return sb.toString();
     }
 
     // Decodes a single string to a list of strings.
     public List<String> decode(String s) {
-        return hm.get(s);
+        return hm.get(s.hashCode());
     }
 }
 
