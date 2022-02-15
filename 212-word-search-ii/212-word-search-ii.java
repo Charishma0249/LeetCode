@@ -10,8 +10,8 @@ class Solution {
         collen = board[0].length;
         
         for(String s : words){
-            if(hs.contains(s) || notWords.contains(s))
-                continue;
+            // if(hs.contains(s) || notWords.contains(s))
+            //     continue;
             char c = s.charAt(0);
             
             for(int i=0; i<rlen; i++)
@@ -20,8 +20,7 @@ class Solution {
                     if(board[i][j]==c) {
                         // System.out.println(s);
                         dfs(board, s, 0, i, j);
-                        if(!hs.contains(s))
-                            notWords.add(s);
+                        
                     }
                 }
             }
