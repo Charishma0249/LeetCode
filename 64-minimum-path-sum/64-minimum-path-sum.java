@@ -1,6 +1,6 @@
 class Solution {
     
-    int minSum=Integer.MAX_VALUE, rlen=0, collen=0;
+    int rlen=0, collen=0;
     int[][] dp;
     public int minPathSum(int[][] grid) {
         rlen = grid.length;
