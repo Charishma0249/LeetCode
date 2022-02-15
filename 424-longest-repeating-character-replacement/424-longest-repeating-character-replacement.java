@@ -19,8 +19,8 @@ class Solution {
             else {
                 alp[s.charAt(l)-'A']--;
                 l++;
-                if(r==len-1 && r-l<max)
-                    break;
+                // if(r==len-1 && r-l<max)
+                //     break;
                 c = s.charAt(l);
                 continue;
             }
