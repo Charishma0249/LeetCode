@@ -13,6 +13,7 @@ class Solution {
             // if(hs.contains(s) || notWords.contains(s))
             //     continue;
             char c = s.charAt(0);
+            boolean flag = false;
             
             for(int i=0; i<rlen; i++)
             {
@@ -20,8 +21,14 @@ class Solution {
                     if(board[i][j]==c) {
                         // System.out.println(s);
                         dfs(board, s, 0, i, j);
-                        
+                        if(hs.contains(s)) {
+                            flag = true;
+                            break;
+                        }
+                            
                     }
+                    if(flag)
+                        break;
                 }
             }
         }
