@@ -13,19 +13,15 @@ class Solution {
             for(int i=0; i<26; i++)
                 max = Math.max(max, alp[i]);
             
-            if(r-l+1-max<=k) {
+            if(r-l+1-max<=k) 
                 res = Math.max(res, r-l+1);
-                // System.out.println("res = "+res+" l = "+l+" r = "+r);
-            }
+            
             else {
                 alp[s.charAt(l)-'A']--;
                 l++;
                 if(r==s.length()-1 && r-l<max)
                     break;
-                if(l<s.length()) {
-                    c = s.charAt(l);
-
-                }
+                c = s.charAt(l);
                 continue;
             }
             
