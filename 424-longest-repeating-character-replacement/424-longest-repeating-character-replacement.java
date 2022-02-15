@@ -2,11 +2,11 @@ class Solution {
     public int characterReplacement(String s, int k) {
         
         int[] alp = new int[26];
-        int res = 0;
+        int res = 0, len = s.length();
         char c = s.charAt(0);
         alp[c-'A']++;
         
-        for(int l=0,r=0; l<s.length() && r<s.length(); ){
+        for(int l=0,r=0; l<len && r<len; ){
             
             int max = 0;
             
@@ -19,14 +19,14 @@ class Solution {
             else {
                 alp[s.charAt(l)-'A']--;
                 l++;
-                if(r==s.length()-1 && r-l<max)
+                if(r==len-1 && r-l<max)
                     break;
                 c = s.charAt(l);
                 continue;
             }
             
             r++;
-            if(r<s.length()) {
+            if(r<len) {
                 c = s.charAt(r);
                 alp[c-'A']++;
             }
