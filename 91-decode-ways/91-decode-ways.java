@@ -10,10 +10,7 @@ class Solution {
     }
     
     public int rec(String s, int i, int j){
-        if(i==s.length() || j==s.length())
-            return 0;
-        
-        if(s.charAt(i)=='0' || ((i!=j) && (10*(s.charAt(i)-'0')+s.charAt(j)-'0')>26))
+        if(i==s.length() || j==s.length() || (s.charAt(i)=='0' || ((i!=j) && (10*(s.charAt(i)-'0')+s.charAt(j)-'0')>26)))
             return 0;
         
         if(i==s.length()-1 || j==s.length()-1)
@@ -23,11 +20,7 @@ class Solution {
             return dp[i][j];
         
         if(i!=j && (10*(s.charAt(i)-'0')+s.charAt(j)-'0')<=26) {
-            if(j==s.length()-1)
-                dp[i][j]=1;
-            else
-                dp[i][j] = rec(s, j+1, j+1) + rec(s, j+1, j+2);
-            // System.out.println("i= "+i+" j = "+j+" dp = "+dp[i][j]);
+            dp[i][j] = rec(s, j+1, j+1) + rec(s, j+1, j+2);
             return dp[i][j];
         }
         
