@@ -15,9 +15,10 @@ class Solution {
         
         for(Map.Entry<Integer, Integer> entry : hm.entrySet()){
             
-            if(hs.contains(entry.getValue()))
+            int val = entry.getValue();
+            if(hs.contains(val))
                 return false;
-            hs.add(entry.getValue());
+            hs.add(val);
         }
         
         return true;
