@@ -12,14 +12,14 @@ class Solution {
             if(idx==s.length()-1)
                 return true;
             int max = Math.max(far+1, minJump+idx);
-            
+           
             for(int i=max; i<=idx+maxJump && i<s.length(); i++){
                 
                 if(s.charAt(i)=='0')
                     qu.add(i);
                 
-                far = Math.max(far, i);
             }
+            far = idx+maxJump;
                 
         }
         
