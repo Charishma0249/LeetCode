@@ -2,7 +2,8 @@ class Solution {
     public boolean uniqueOccurrences(int[] arr) {
         
         HashMap<Integer, Integer> hm = new HashMap<>();
-        int[] count = new int[1000];
+        HashSet<Integer> hs = new HashSet<>();
+        
         for(int i=0; i<arr.length; i++){
             int c =0;
             if(hm.containsKey(arr[i])){
@@ -14,10 +15,9 @@ class Solution {
         
         for(Map.Entry<Integer, Integer> entry : hm.entrySet()){
             
-            if(count[entry.getValue()]>0)
+            if(hs.contains(entry.getValue()))
                 return false;
-            
-            count[entry.getValue()]++;
+            hs.add(entry.getValue());
         }
         
         return true;
