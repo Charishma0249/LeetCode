@@ -16,10 +16,10 @@ class Solution {
             int diff = temp[i-1];
             
             if(min==diff){
-                List<Integer> pair = new ArrayList<>();
-                pair.add(arr[i-1]);
-                pair.add(arr[i]);
-                res.add(pair);
+                // List<Integer> pair = new ArrayList<>();
+                // pair.add(arr[i-1]);
+                // pair.add(arr[i]);
+                res.add(Arrays.asList(arr[i-1], arr[i]));
             }
         }
         
