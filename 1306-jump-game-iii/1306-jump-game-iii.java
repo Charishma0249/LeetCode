@@ -8,11 +8,9 @@ class Solution {
     
     public boolean dfs(int[] arr, int idx){
         
-        if(idx<0 || idx>=arr.length)
+        if(idx<0 || idx>=arr.length || visited[idx])
             return false;
-        
-        if(visited[idx])
-            return false;
+       
         if(arr[idx]==0)
             return true;
         visited[idx] = true;
