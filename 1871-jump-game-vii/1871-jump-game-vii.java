@@ -15,7 +15,7 @@ class Solution {
             
             for(int i=max; i<=idx+maxJump && i<s.length(); i++){
                 
-                if(s.charAt(i)=='0' && i!=far)
+                if(s.charAt(i)=='0')
                     qu.add(i);
                 
                 far = Math.max(far, i);
@@ -25,24 +25,4 @@ class Solution {
         
         return false;
     }
-    
-//     public boolean rec(String s, int minJump, int maxJump, int idx){
-        
-//         boolean res=false;
-        
-//         // if(idx>=s.length())
-//         //     return false;
-//         if(idx==s.length()-1)
-//             return true;
-        
-//         if(s.charAt(idx)=='1')
-//             return false;
-//         for(int i=idx+minJump; i<=idx+maxJump && i<s.length(); i++){
-//             res = rec(s, minJump, maxJump, i);
-//             if(res) {
-//                 return true;
-//             }
-//         }
-//         return res;
-//     }
 }
