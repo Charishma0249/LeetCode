@@ -1,30 +1,20 @@
 class Solution {
     public int findCenter(int[][] edges) {
-        HashMap<Integer, Integer> hm = new HashMap<>();
         
-        for(int i=0; i<edges.length; i++){
+        int len = edges.length;
+        int[] arr = new int[len+1];
+        for(int i=0; i<len; i++){
             
-            int hsa=0, hsb=0;
-            // HashSet<Integer> hsa = new HashSet<>();
-            // HashSet<Integer> hsb = new HashSet<>();
+            arr[edges[i][0]-1]++;
+            arr[edges[i][1]-1]++;
             
-            if(hm.containsKey(edges[i][0]))
-                hsa = hm.get(edges[i][0]);
-            if(hm.containsKey(edges[i][1]))
-                hsb = hm.get(edges[i][1]);
-            
-            // hsa.add(edges[i][1]);
-            // hsb.add(edges[i][0]);
-            
-            hm.put(edges[i][0], hsa+1);
-            hm.put(edges[i][1], hsb+1);
+            if(arr[edges[i][0]-1]>1)
+                return edges[i][0];
+            else if(arr[edges[i][1]-1]>1)
+                return edges[i][1];
         }
         
-        for(Map.Entry<Integer, Integer> entry : hm.entrySet()){
-            if(entry.getValue()==hm.size()-1)
-                return entry.getKey();
-        }
-        return -1;
+        return 0;
     }
 }
  
