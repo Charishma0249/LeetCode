@@ -5,13 +5,15 @@ class Solution {
         int[] arr = new int[len+1];
         for(int i=0; i<len; i++){
             
-            arr[edges[i][0]-1]++;
-            arr[edges[i][1]-1]++;
+            int node1 = edges[i][0];
+            int node2 = edges[i][1];
+            arr[node1-1]++;
+            arr[node2-1]++;
             
-            if(arr[edges[i][0]-1]>1)
-                return edges[i][0];
-            else if(arr[edges[i][1]-1]>1)
-                return edges[i][1];
+            if(arr[node1-1]>1)
+                return node1;
+            else if(arr[node2-1]>1)
+                return node2;
         }
         
         return 0;
