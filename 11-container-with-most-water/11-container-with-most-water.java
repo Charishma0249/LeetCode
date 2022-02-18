@@ -1,25 +1,32 @@
 class Solution {
-    int max = 0;
     public int maxArea(int[] height) {
         
-        
-        dp(height, 0, height.length-1);
-        return max;
-    }
-    
-    public void dp(int[] h, int k, int l) {
-        
-        if(k>=l)
-            return ;
-        
-        if(h[k]<h[l]) {
-                max = Math.max(h[k]*(l-k), max);
-                dp(h, k+1, l);
+        int len = height.length;
+        int area=0;
+        for(int i=0, j= len-1; i<j; ){
+            area = Math.max(area, Math.min(height[i], height[j])*(j-i));
+            if(height[i]<height[j]){
+                int n = height[i];
+                i++;
+                while(i<j && height[i]<n){
+                    i++;
+                }
             }
-        else {
-                max = Math.max(h[l]*(l-k), max);
-                dp(h, k, l-1);
+            else if(height[i]>height[j]){
+                int n = height[j];
+                j--;
+                while(j>i && n>height[j])
+                    j--;
+            }
+            else{
+                // area = Math.max(area, Math.min(height[i], height[j])*(j-i));
+                i++;
+                j--;
+                // continue;
+            }
+            // area = Math.max(area, Math.min(height[i], height[j])*(j-i));
         }
         
+        return area;
     }
 }
