@@ -35,11 +35,11 @@ class Solution {
             ListNode node = pq.poll();
             // System.out.println(node.val);
             if(ls==null){
-                ls = new ListNode(node.val);
+                ls = node;
                 res=ls;
             }
             else{
-                ls.next = new ListNode(node.val);
+                ls.next = node;
                 ls = ls.next;
             }
             if(node.next!=null)
