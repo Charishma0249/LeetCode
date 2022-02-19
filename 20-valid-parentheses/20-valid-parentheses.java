@@ -13,8 +13,8 @@ class Solution {
                 
                 if(c=='}' && popChar=='{' || c==']' && popChar=='[' || c==')' && popChar=='(')
                     continue;
-                else
-                    return false;
+                
+                return false;
             }
             
             stk.push(c);
