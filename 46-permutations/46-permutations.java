@@ -2,6 +2,7 @@ class Solution {
     List<List<Integer>> res = new ArrayList<>();
     public List<List<Integer>> permute(int[] nums) {
         
+        Arrays.sort(nums);
         rec(nums, new ArrayList<Integer>());
         return res;
     }
@@ -10,7 +11,7 @@ class Solution {
         
         if(al.size()==nums.length){
             List<Integer> ls = new ArrayList<>(al);
-            if(!res.contains(ls))
+            // if(!res.contains(ls))
                 res.add(ls);
             return;
         }
