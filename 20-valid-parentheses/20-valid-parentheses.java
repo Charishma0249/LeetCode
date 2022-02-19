@@ -11,7 +11,7 @@ class Solution {
                     return false;
                 char popChar = stk.pop();
                 
-                if(c=='}' && popChar=='{' || c==']' && popChar=='[' || c==')' && popChar=='(')
+                if((c=='}' && popChar=='{') || (c==']' && popChar=='[') || (c==')' && popChar=='('))
                     continue;
                 
                 return false;
