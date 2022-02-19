@@ -9,12 +9,11 @@ class Solution {
     
     public void rec(int[] arr, int target, int sum, List<Integer> al, int j){
         
-        if(sum==target){
-            res.add(new ArrayList<>(al));
+        if(sum>=target){
+            if(sum==target)
+                res.add(new ArrayList<>(al));
             return ;
         }
-        if(sum>target)
-            return ;
         
         for(int i=j; i<arr.length; i++){
             al.add(arr[i]);
