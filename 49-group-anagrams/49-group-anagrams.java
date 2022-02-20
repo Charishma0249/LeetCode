@@ -4,7 +4,7 @@ class Solution {
         List<List<String>> res = new ArrayList<>();
         HashMap<String, List<String>> hm = new HashMap<>();
         for(String s:strs){
-            String sb = countSort(s).toString();
+            String sb = countSort(s);
             // System.out.println(sb);
             List<String> ls = new ArrayList<>();
             
@@ -22,7 +22,7 @@ class Solution {
         return res;
     }
     
-    public StringBuilder countSort(String s){
+    public String countSort(String s){
         
         int[] alp = new int[26];
         
@@ -38,6 +38,6 @@ class Solution {
             }
         }
         
-        return sb;
+        return sb.toString();
     }
 }
