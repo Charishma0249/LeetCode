@@ -1,23 +1,20 @@
 class Solution {
-    int count=0;
-    int[][] dp;
     public int uniquePaths(int m, int n) {
         
-        dp = new int[m][n];
-        dp[0][0] = rec(m,n, 0, 0);
-        return dp[0][0];
+        int[][] dp = new int[m][n];
+        return rec(0, 0, m, n, dp);
     }
     
-    public int rec(int m, int n, int i, int j){
+    public int rec(int i, int j, int m, int n, int[][] dp){
         
-        if(i==m || j==n)
+        if(i>=m || j>=n)
             return 0;
         if(i==m-1 && j==n-1)
             return 1;
-        
         if(dp[i][j]>0)
             return dp[i][j];
-        dp[i][j] = rec(m, n, i+1, j)+rec(m, n, i, j+1);
+        
+        dp[i][j] = rec(i+1, j, m, n, dp) + rec(i, j+1, m, n, dp);
         
         return dp[i][j];
     }
