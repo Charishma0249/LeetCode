@@ -8,7 +8,7 @@ class Solution {
             
             int n = columnTitle.charAt(i)-'A'+1;
             // System.out.println(" n = "+n+" j = "+j);
-            count += Math.pow(26, --j)*n;
+            count += (int)Math.pow(26, --j)*n;
         }
         
         return count;
