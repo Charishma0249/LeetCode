@@ -9,10 +9,10 @@ class Solution {
         
         if(i>=m || j>=n)
             return 0;
-        if(i==m-1 && j==n-1)
-            return 1;
         if(dp[i][j]>0)
             return dp[i][j];
+        if(i==m-1 && j==n-1)
+            return 1;
         
         dp[i][j] = rec(i+1, j, m, n, dp) + rec(i, j+1, m, n, dp);
         
