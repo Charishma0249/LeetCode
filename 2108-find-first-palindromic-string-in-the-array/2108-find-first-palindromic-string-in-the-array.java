@@ -12,15 +12,23 @@ class Solution {
     
     public boolean isPalindrome(String s){
         
-        int len = s.length();
-        for(int i=0, j=len-1; i<j; i++, j--){
-            char c1 = s.charAt(i);
-            char c2 = s.charAt(j);
-            
-            if(c1!=c2)
-                return false;
-        }
+        StringBuilder sb = new StringBuilder(s);
+        StringBuilder rev = new StringBuilder(s);
+        // System.out.println(rev);
         
-        return true;
+        if(rev.toString().equals(sb.reverse().toString())){
+            return true;
+        }
+        return false;
+//         int len = s.length();
+//         for(int i=0, j=len-1; i<j; i++, j--){
+//             char c1 = s.charAt(i);
+//             char c2 = s.charAt(j);
+            
+//             if(c1!=c2)
+//                 return false;
+//         }
+        
+//         return true;
     }
 }
