@@ -4,8 +4,8 @@ class Solution {
         int len = s.length();
         int maxLen = Integer.MIN_VALUE;
         
-        if(len==0)
-            return 0;
+        if(len==0 || len==1)
+            return len;
         
         characterMapping.put(s.charAt(0), 0);
         for(int i=0, j= i+1; i<len && j<len; j++) {
@@ -26,6 +26,6 @@ class Solution {
                 
             
         }
-    return (maxLen == Integer.MIN_VALUE) ? 1 : maxLen;
+    return maxLen;
     }
 }
