@@ -19,9 +19,7 @@ class Solution {
             }
         }
         
-        count = Math.max(count, temp);
         
-        
-        return count;
+        return Math.max(count, temp);
     }
 }
