@@ -17,8 +17,7 @@ class Solution {
             
             count = Math.max(count, Math.max(trueCount, falseCount));
             
-            if(j-i+1-count>k) {
-                while(j-i+1-count>k) {
+            while(j-i+1-count>k) {
                     char c1 = answerKey.charAt(i);
                     if(c1=='T') {
                         trueCount--;
@@ -27,7 +26,6 @@ class Solution {
                         falseCount--;
                     }
                     i++;
-                }
             }
             
             maxCount = Math.max(maxCount, j-i+1);
