@@ -1,24 +1,34 @@
 class Solution {
-    int[] res;
     public int[] countBits(int n) {
+        int[] result = new int[n+1];
         
-        res = new int[n+1];
-        res[0] = 0;
-        if(n>0)
-            res[1] = 1;
-        
-        double cons = Math.log(2);
-        for(int i=2; i<n+1; i++) {
-            if(Math.ceil(Math.log(i)/cons) == Math.floor(Math.log(i)/cons))
-                res[i]=1;
-            else {
-                
-                res[i] = res[i/2];
-                if(i%2==1)
-                    res[i] += 1;
-            }
+        if(n>=1) {
+            result[0] = 0;
+            result[1] = 1;
+        }
+        if(n==0) {
+            result[0] = 0;
         }
         
-        return res;
+        for(int i=2; i<n+1; i++) {
+            result[i] = findBits(i);
+        }
+        return result;
+    }
+    
+    public static int findBits(int i) {
+        
+        int count =0, r=0;
+        float fr = 0.0f;
+        while(i>1) {
+            r = i%2;
+            
+            if(r==1) {
+                count++;
+            }
+            i = i/2;
+        }
+        
+        return count+1;
     }
 }
