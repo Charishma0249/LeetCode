@@ -19,9 +19,8 @@ class Solution {
                     i++;
                 }
             }
-            if(j-i+1-count<=k) {
-                maxCount = Math.max(maxCount, j-i+1);
-            }
+            
+            maxCount = Math.max(maxCount, j-i+1);
         }
         
         return maxCount;
