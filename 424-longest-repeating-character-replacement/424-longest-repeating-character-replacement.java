@@ -1,37 +1,29 @@
 class Solution {
     public int characterReplacement(String s, int k) {
         
+        int len = s.length();
+        int count=0, maxCount = 0;
         int[] alp = new int[26];
-        int res = 0, len = s.length();
-        char c = s.charAt(0);
-        alp[c-'A']++;
         
-        for(int l=0,r=0; l<len && r<len; ){
+        for(int i=0, j=0; i<=j && j<len; j++) {
+            char c = s.charAt(j);
+            alp[c-'A']++;
             
-            int max = 0;
+            count = Math.max(count, alp[c-'A']);
             
-            for(int i=0; i<26; i++)
-                max = Math.max(max, alp[i]);
-            
-            if(r-l+1-max<=k) 
-                res = Math.max(res, r-l+1);
-            
-            else {
-                alp[s.charAt(l)-'A']--;
-                l++;
-                // if(r==len-1 && r-l<max)
-                //     break;
-                c = s.charAt(l);
-                continue;
+            if(j-i+1-count>k){
+                while(j-i+1-count>k) {
+                    char c1 = s.charAt(i);
+                    alp[c1-'A']--;
+                    count = Math.max(count, alp[c1-'A']);
+                    i++;
+                }
             }
-            
-            r++;
-            if(r<len) {
-                c = s.charAt(r);
-                alp[c-'A']++;
+            if(j-i+1-count<=k) {
+                maxCount = Math.max(maxCount, j-i+1);
             }
         }
         
-        return res;
+        return maxCount;
     }
 }
