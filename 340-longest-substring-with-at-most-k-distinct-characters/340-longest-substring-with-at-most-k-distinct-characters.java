@@ -22,14 +22,10 @@ class Solution {
                     maxCount = Math.max(maxCount, j-i);
                     while(i<j) {
                         char c1 = s.charAt(i);
-                        if(hm.get(c1)==1) {
-                            hm.put(c1, 0);
-                            i++;
+                        hm.put(c1, hm.get(c1)-1);
+                        i++;
+                        if(hm.get(c1)==0) {
                             break;
-                        }
-                        else {
-                            hm.put(c1, hm.get(c1)-1);
-                            i++;
                         }
                     }
                 }
