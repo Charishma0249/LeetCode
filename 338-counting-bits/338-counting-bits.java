@@ -16,15 +16,15 @@ class Solution {
         int count =0, r=0;
         float fr = 0.0f;
         while(i>1) {
+            if(dp[i]>0) {
+                return count+dp[i];
+            }
             r = i%2;
             
             if(r==1) {
                 count++;
             }
             i = i/2;
-            if(dp[i]>0) {
-                return count+dp[i];
-            }
         }
         
         return count+1;
