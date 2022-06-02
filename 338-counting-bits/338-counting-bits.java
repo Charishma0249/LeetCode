@@ -1,7 +1,6 @@
 class Solution {
     public int[] countBits(int n) {
         int[] result = new int[n+1];
-        int[] dp = new int[n+1];
         
         if(n>=1) {
             result[0] = 0;
@@ -12,8 +11,7 @@ class Solution {
         }
         
         for(int i=2; i<n+1; i++) {
-            result[i] = findBits(i, dp);
-            dp[i] = result[i];
+            result[i] = findBits(i, result);
         }
         return result;
     }
