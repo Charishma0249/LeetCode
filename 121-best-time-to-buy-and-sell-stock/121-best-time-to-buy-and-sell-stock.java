@@ -13,7 +13,7 @@ class Solution {
             else {
                 if(prices[i]-min>=res) {
                     max = prices[i];
-                    res = Math.max(res, max-min); 
+                    res = prices[i]-min; 
                 }
             }
         }
