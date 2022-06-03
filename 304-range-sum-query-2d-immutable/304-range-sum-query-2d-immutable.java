@@ -6,11 +6,9 @@ class NumMatrix {
         prefix = new int[rlen][collen];
         for(int i=0; i<rlen; i++) {
             for(int j=0; j<collen; j++) {
-                if(j==0) {
-                    prefix[i][j] = matrix[i][j];
-                }
-                else {
-                    prefix[i][j] = prefix[i][j-1]+matrix[i][j];
+                prefix[i][j] = matrix[i][j];
+                if(j>0) {
+                    prefix[i][j] += prefix[i][j-1];
                 }
             }
         }
@@ -20,11 +18,9 @@ class NumMatrix {
         
         int sum=0;
         for(int i=row1; i<=row2; i++) {
+            sum +=prefix[i][col2];
             if(col1>0) {
-                sum = sum+prefix[i][col2]-prefix[i][col1-1];
-            }
-            else {
-                sum +=prefix[i][col2];
+                sum = sum-prefix[i][col1-1];
             }
         }
         
