@@ -1,7 +1,7 @@
 class Solution {
     public List<Integer> getRow(int rowIndex) {
-        List<List<Integer>> result = new ArrayList<>();
         
+        List<Integer> prev = new ArrayList<>();
         for(int i=0; i<rowIndex+1; i++) {
             List<Integer> ls = new ArrayList<>();
             for(int j=0; j<i+1; j++) {
@@ -9,13 +9,12 @@ class Solution {
                     ls.add(1);
                 }
                 else {
-                    List<Integer> prev = result.get(result.size()-1);
                     ls.add(prev.get(j-1)+prev.get(j));
                 }
             }
-            result.add(ls);
+            prev = ls;
         }
         
-        return result.get(rowIndex);
+        return prev;
     }
 }
