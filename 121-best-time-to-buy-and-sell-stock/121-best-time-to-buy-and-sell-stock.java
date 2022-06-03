@@ -10,11 +10,9 @@ class Solution {
             if(prices[i]<min) {
                 min = prices[i];
             } 
-            else {
-                if(prices[i]-min>=res) {
-                    max = prices[i];
-                    res = prices[i]-min; 
-                }
+            else if(prices[i]-min>=res){
+                 max = prices[i];
+                 res = prices[i]-min; 
             }
         }
         
