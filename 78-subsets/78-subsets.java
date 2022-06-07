@@ -10,9 +10,9 @@ class Solution {
     public void findSubsets(int[] nums, List<List<Integer>> result, ArrayList<Integer> subset, int j) {
         
         
-        if(result.contains(subset)) {
-            return ;
-        }
+//         if(result.contains(subset)) {
+//             return ;
+//         }
         
         for(int i=j; i<nums.length; i++) {
             subset.add(nums[i]);
