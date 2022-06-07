@@ -10,16 +10,16 @@ class Solution {
     public void findSubsets(int[] nums, List<List<Integer>> result, ArrayList<Integer> subset, int j) {
         
         
-        if(result.contains(new ArrayList<>(subset))) {
+        if(result.contains(subset)) {
             return ;
         }
         
         for(int i=j; i<nums.length; i++) {
             subset.add(nums[i]);
+            ArrayList<Integer> al = new ArrayList<>(subset);
+            findSubsets(nums, result, al, i+1);
             
-            findSubsets(nums, result, subset, i+1);
-            
-            result.add(new ArrayList<>(subset));
+            result.add(al);
             subset.remove(subset.size()-1);
         }
     }
