@@ -1,26 +1,22 @@
 class Solution {
     public boolean canPermutePalindrome(String s) {
+        int[] alp = new int[26];
+        int count =0;
         
-        HashMap<Character, Integer> hm = new HashMap<>();
-        
-        for(char c : s.toCharArray()) {
-            int count =0;
-            if(hm.containsKey(c))
-                count = hm.get(c);
+        for(int i=0; i<s.length(); i++) {
             
-            hm.put(c, count+1);
+            char c = s.charAt(i);
+            
+            alp[c-'a']++;
         }
         
-        int co=0;
-        for(Map.Entry<Character, Integer> entry : hm.entrySet()) {
+        for(int i=0; i<26; i++) {
             
-            int val = entry.getValue();
-            if(val%2!=0) 
-                co++;
-            
+            if(alp[i]%2!=0) {
+                count++;
+            }
         }
         
-        return co>1 ? false : true;
-        
+        return count<=1;
     }
 }
