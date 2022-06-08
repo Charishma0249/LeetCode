@@ -7,7 +7,6 @@ class Solution {
         
         for(int i=0; i<len; i++) {
             dp[i][i] = 1;
-            count++;
         }
         
         for(int k=1; k<len; k++) {
@@ -22,6 +21,6 @@ class Solution {
             }
         }
         
-        return count;
+        return count+len;
     }
 }
