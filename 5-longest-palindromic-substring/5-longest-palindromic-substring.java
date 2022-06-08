@@ -23,9 +23,7 @@ class Solution {
                         result = s.substring(i, i+k+1);
                     }
                     dp[i][i+k] = 1;
-                } else {
-                    dp[i][i+k] = 0;
-                }
+                } 
                 
             }
         }
