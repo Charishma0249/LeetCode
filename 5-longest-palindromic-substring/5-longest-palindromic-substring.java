@@ -1,38 +1,35 @@
 class Solution {
-    int len;
-    int fIndex, lIndex, max =0;
     public String longestPalindrome(String s) {
-        len = s.length();
+        
+        int len = s.length();
         int[][] dp = new int[len][len];
+        int max = 0;
+        String result="";
         
-        for(int i=0; i<len; i++)
+        for(int i=0; i<len; i++) {
             dp[i][i] = 1;
-        
-        for(int i=1; i<len; i++){
-            checkForSubstrings(i, dp, s);
+            result = s.substring(i, i+1);
         }
         
-        return s.substring(fIndex, lIndex+1);
-    }
-    
-    public void checkForSubstrings(int k, int[][] dp, String s){
-        
-        for(int i=0; i+k<len; i++){
-            char c1 = s.charAt(i);
-            char c2 = s.charAt(i+k);
-            // System.out.println(c1+" i = "+i+" "+c2+" i+k = "+(i+k));
-            
-            if(c1==c2 && ((i < (i+k-2) && dp[i+1][i+k-1]==1) || i>=(i+k-2))){
-                if(max<k){
-                    fIndex = i;
-                    lIndex = i+k;
-                    max =k;
-                    // System.out.println("fIdx = "+fIndex+" lIdx = "+lIndex+" max = "+max);
+        for(int k=1; k<len; k++) {
+            for(int i=0; i+k<len; i++) {
+                
+                char c1 = s.charAt(i);
+                char c2 = s.charAt(i+k);
+                
+                if((c1==c2 && dp[i+1][i+k-1]==1) || (c1 == c2 && i+1==i+k)) {
+                    if(max<k+1) {
+                        max = k+1;
+                        result = s.substring(i, i+k+1);
+                    }
+                    dp[i][i+k] = 1;
+                } else {
+                    dp[i][i+k] = 0;
                 }
-                dp[i][i+k]=1;
+                
             }
-            else
-                dp[i][i+k]=0;
         }
+        
+        return result;
     }
 }
