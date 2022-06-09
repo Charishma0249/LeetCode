@@ -5,10 +5,11 @@ class Solution {
         int len = numbers.length;
         
         for(int i=0, j=len-1; i<j; ) {
-            if(numbers[i]+numbers[j]>target) {
+            int sum = numbers[i]+numbers[j];
+            if(sum>target) {
                 j--;
             } 
-            else if(numbers[i]+numbers[j]<target) {
+            else if(sum<target) {
                 i++;
             } else {
                 return new int[]{i+1, j+1};
