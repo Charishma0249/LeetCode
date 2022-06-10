@@ -1,13 +1,15 @@
 class Solution {
     public boolean isSubsequence(String s, String t) {
         
-        int index = 0;
-        for(int i=0; i<s.length(); i++) {
-            char c = s.charAt(i);
-            int lastIndx = t.indexOf(c, index);
-            if(lastIndx == -1)
+        int i=0, tlen = t.length();
+        for(char c:s.toCharArray()) {
+            
+            if(t.indexOf(c, i)!=-1) {
+                i = t.indexOf(c, i)+1;
+                // System.out.println(i);
+            } else {
                 return false;
-            index = lastIndx+1;
+            }
         }
         
         return true;
