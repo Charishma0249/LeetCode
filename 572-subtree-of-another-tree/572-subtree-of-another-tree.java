@@ -31,10 +31,7 @@ class Solution {
                 return true;
             }
         }
-        boolean r1 = rec(root.left, subRoot);
-        boolean r2 = rec(root.right, subRoot);
-        
-        return r1||r2;
+        return rec(root.left, subRoot) || rec(root.right, subRoot);
     }
     
     public boolean findIfBothTreesAreSame(TreeNode root, TreeNode subRoot) {
@@ -45,9 +42,7 @@ class Solution {
             return false;
         }
         
-        boolean r1 = findIfBothTreesAreSame(root.right, subRoot.right);
-        boolean r2 = findIfBothTreesAreSame(root.left, subRoot.left);
+        return findIfBothTreesAreSame(root.right, subRoot.right) && findIfBothTreesAreSame(root.left, subRoot.left);
         
-        return r1&&r2;
     }
 }
