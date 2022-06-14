@@ -14,11 +14,13 @@ class Solution {
                     path.set(j, path.get(j)+Math.min(prev.get(j-1), prev.get(j)));
                 }
                 
-                if(i==triangle.size()-1) {
-                    min = Math.min(min, path.get(j));
-                }
             }
             triangle.set(i, path);
+        }
+        
+        List<Integer> path = triangle.get(triangle.size()-1);
+        for(int i=0; i<path.size(); i++) {
+            min = Math.min(min, path.get(i));
         }
         
         return min == Integer.MAX_VALUE? triangle.get(0).get(0) : min;
