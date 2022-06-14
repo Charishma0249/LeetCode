@@ -5,7 +5,7 @@ class Solution {
         HashMap<Integer, Integer> hm = new HashMap<>();
         int len = nums.length;
         int[] temp = new int[len];
-        int[] res = new int[len];
+        // int[] res = new int[len];
         for(int i=0; i<len; i++) {
             temp[i] = nums[i];
         }
@@ -16,9 +16,9 @@ class Solution {
                 hm.put(temp[i], i);
         }
         for(int i=0; i<len; i++) {
-            res[i] = hm.get(nums[i]);
+            nums[i] = hm.get(nums[i]);
         }
         
-        return res;
+        return nums;
     }
 }
