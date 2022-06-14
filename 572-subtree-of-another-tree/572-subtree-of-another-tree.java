@@ -41,7 +41,7 @@ class Solution {
         if(root==null && subRoot==null) {
             return true;
         }
-        if((root==null && subRoot!=null) || (root!=null && subRoot==null) || root.val!=subRoot.val) {
+        else if((root==null && subRoot!=null) || (root!=null && subRoot==null) || root.val!=subRoot.val) {
             return false;
         }
         
