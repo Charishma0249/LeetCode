@@ -3,8 +3,8 @@ class Solution {
         int len = s.length();
         int[][] dp = new int[len][len]; 
         int maxLen = 0;
-        StringBuilder sb = new StringBuilder();
-        // String result;
+        // StringBuilder sb = new StringBuilder();
+        String result = "";
         
         for(int k=0; k<len; k++) {
             for(int i=0; i+k<len; i++) {
@@ -19,11 +19,11 @@ class Solution {
                 } 
                 if(maxLen<dp[i][i+k]) {
                     maxLen = dp[i][i+k];
-                    sb = new StringBuilder(s.substring(i, i+k+1));
+                    result = s.substring(i, i+k+1);
                 }
             }
         }
         
-        return sb.toString();
+        return result;
     }
 }
