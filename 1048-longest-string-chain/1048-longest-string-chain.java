@@ -13,11 +13,6 @@ class Solution {
             rec(words, hm, words[i], 0);
         }
         
-        // for(Map.Entry<String, Integer> entry : hm.entrySet()) {
-        //     System.out.println(entry.getKey() +" "+ entry.getValue());
-        //     // len++;
-        // }
-        // System.out.println(len);
         return maxLen;
     }
     
@@ -35,12 +30,10 @@ class Solution {
         for(int i=0; i<word.length(); i++) {
             StringBuilder sb = new StringBuilder(word);
             sb = sb.deleteCharAt(i);
-            int rlen = rec(words, hm, sb.toString(), len);
-            localMax = Math.max(localMax, rlen);
+            localMax = Math.max(localMax, rec(words, hm, sb.toString(), len));
         }
         localMax++;
         hm.put(word, localMax);
-        // System.out.println(word+" "+localMax);
         maxLen = Math.max(localMax, maxLen);
         return localMax;
     }
