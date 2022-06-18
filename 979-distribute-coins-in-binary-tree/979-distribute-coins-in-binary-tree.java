@@ -14,27 +14,22 @@
  * }
  */
 class Solution {
-    int moves = 0;
+    int count =0;
     public int distributeCoins(TreeNode root) {
         
-        dfs(root);
-        
-        return moves;
+        rec(root);
+        return count;
     }
     
-    public int dfs(TreeNode node) {
+    public int rec(TreeNode node) {
+        if(node==null)
+            return 0;
         
-        if(node.left==null && node.right==null)
-            return node.val-1;
+        int leftCoins = rec(node.left);
+        int rightCoins = rec(node.right);
         
-        int a =0, b=0;
-        if(node.left!=null)
-            a = dfs(node.left);
-        if(node.right!=null)
-            b = dfs(node.right);
-        moves += Math.abs(a)+Math.abs(b);
+        count += Math.abs(leftCoins)+Math.abs(rightCoins);
         
-        node.val = node.val+a+b;
-        return node.val-1;
+        return leftCoins+rightCoins+node.val-1;
     }
 }
