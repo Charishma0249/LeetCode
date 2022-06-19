@@ -35,11 +35,11 @@ class Solution {
         int left = dfs(node.left);
         int right = dfs(node.right);
         
-        if ((left==0 && right==0) || (left==0 && right!=0) || (left!=0 && right==0)) {
+        if ((left==0 || right==0)) {
             node.val = 1;
             count++;
         } 
-        else if((left<0 && right==1) || (left==1 && right<0) || (left==1 && right==1) || (left==1 && right==2) || (left==2 && right==1)) {
+        else if((left==1 || right==1) || (left==1 && right==2) || (left==2 && right==1)) {
             node.val = 2;
         }
         
