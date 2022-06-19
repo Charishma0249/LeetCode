@@ -29,20 +29,16 @@ class Solution {
     
     public int dfs(TreeNode node) {
         
-        int left=-1, right=-1;
+        if(node==null)
+            return -1;
         
-        if(node.left!=null) {
-            left = dfs(node.left);
-        } 
-        if(node.right!=null) {
-            right = dfs(node.right);
-        }
+        int left = dfs(node.left);
+        int right = dfs(node.right);
         
         if ((left==0 && right==0) || (left==0 && right!=0) || (left!=0 && right==0)) {
             node.val = 1;
             count++;
         } 
-        
         else if((left<0 && right==1) || (left==1 && right<0) || (left==1 && right==1) || (left==1 && right==2) || (left==2 && right==1)) {
             node.val = 2;
         }
