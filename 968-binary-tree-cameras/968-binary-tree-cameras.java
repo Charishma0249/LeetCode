@@ -29,24 +29,16 @@ class Solution {
             return 0;
         }
         
-        int leftCount = dfs(node.left, node, count)-count;
-        int rightCount = dfs(node.right, node, count)-count;
-        int res = leftCount+rightCount+count;
+        int res = dfs(node.left, node, count)+dfs(node.right, node, count)-count;
         
-        // if(node==parent) {
-        //     if(node.val==0)
-        //         return res+1;
-        //     return res;
-        // }
+        if(parent.val==1)
+            return res;
         
-        if( (node.val==0) && parent.val!=1) {
+        if( (node.val==0)) {
             parent.val = 1;
             return res+1;
         }
         else if(node.val==1) {
-            if(parent.val==1) {
-                return res;
-            }
             parent.val = 2;
         }
         return res;
