@@ -1,61 +1,48 @@
 class Solution {
     public int[][] indexPairs(String text, String[] words) {
+        ArrayList<int[][]> foundWords = new ArrayList<>();  
         
-        int[][] res;
-        PriorityQueue<Pair> pq = new PriorityQueue<>(new Comparator<>(){
+        Comparator<int[]> customComparator = new Comparator<>() {
             
             @Override
-            public int compare(Pair p1, Pair p2) {
-                if(p1.i>p2.i)
-                    return 1;
-                else if(p1.i<p2.i)
+            public int compare(int[] a, int[] b) {
+                if(a[0]<b[0]) 
                     return -1;
-                else {
-                    if(p1.j>p2.j)
-                        return 1;
-                    else if(p1.j<p2.j)
+                else if(a[0]==b[0]) {
+                    if(a[1]<b[1])
                         return -1;
-                    return 0;
+                    else 
+                        return 1;
                 }
+                return 1;
             }
+        };
+        for(String word : words) {
             
-        });
-        
-        for(int i=0; i<words.length; i++) {
-            String word = words[i];
-            int j=0;
+            int start=0;
             int len = word.length();
-            while(j+len<=text.length()) {
-                int idx = text.indexOf(word, j);
-                if(idx!=-1) {
-                    pq.add(new Pair(idx, idx+len-1));
-                    j = idx+1;
-                }
-                else
+            while(start+len <= text.length()) {
+                start = text.indexOf(word, start);
+                // System.out.println(start);
+                if(start==-1) {
                     break;
+                }
+                
+                foundWords.add(new int[][]{{start, start+len-1}});
+                start++;
             }
         }
         
-        res = new int[pq.size()][2];
-        int i=0;
-        while(!pq.isEmpty()) {
-            Pair p = pq.poll();
-            res[i][0] = p.i;
-            res[i][1] = p.j;
-            i++;
+        // System.out.println(foundWords);
+        int[][] results = new int[foundWords.size()][2];
+        for(int i=0; i<foundWords.size(); i++) {
+            int[][] arr = foundWords.get(i);
+            results[i][0] = arr[0][0];
+            results[i][1] = arr[0][1];
         }
         
-        return res;
-    }
-}
-
-class Pair{
-    
-    int i;
-    int j;
-    
-    public Pair(int i, int j) {
-        this.i = i;
-        this.j = j;
+        Arrays.sort(results, customComparator);
+        
+        return results;
     }
 }
