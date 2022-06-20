@@ -14,41 +14,35 @@
  * }
  */
 class Solution {
-    List<List<Integer>> res = new ArrayList<>();
     public List<List<Integer>> findLeaves(TreeNode root) {
         
-        while(root!=null) {
-            List<Integer> al;
-            if(root.left==null && root.right==null) {
-                al = new ArrayList<>();
-                al.add(root.val);
-                res.add(al);
-                break;
-            }
-            
-            al = new ArrayList<>();
-            rec(root, al, root, 0);
-            
-            res.add(al);
-            
+        List<List<Integer>> result = new ArrayList<>();
+        if(root==null)
+            return result;
+        
+        while(root.left!=null || root.right!=null) {
+            result.add(addLeavesAndDelete(root, root, new ArrayList<Integer>(), 0));
         }
-        return res;
+        result.add(new ArrayList<>(Arrays.asList(root.val)));
+        return result;
     }
     
-    public void rec(TreeNode node, List<Integer> al, TreeNode parent, int i) {
+    public List<Integer> addLeavesAndDelete(TreeNode node, TreeNode parent, List<Integer> leaves, int child) {
         
         if(node==null)
-            return ;
+            return leaves;
         if(node.left==null && node.right==null) {
-            al.add(node.val);
-            if(i==-1)
-                parent.left=null;
-            else if(i==1)
+            leaves.add(node.val);
+            if(child==-1)
+                parent.left = null;
+            else if(child==1)
                 parent.right=null;
-            return ;
+            return leaves;
         }
         
-        rec(node.left, al, node, -1);
-        rec(node.right, al, node, 1);
+        leaves = addLeavesAndDelete(node.left, node, leaves, -1);
+        leaves = addLeavesAndDelete(node.right, node, leaves, 1);
+        
+        return leaves;
     }
 }
