@@ -17,8 +17,6 @@ class Solution {
     public List<List<Integer>> findLeaves(TreeNode root) {
         
         List<List<Integer>> result = new ArrayList<>();
-        if(root==null)
-            return result;
         
         while(root.left!=null || root.right!=null) {
             result.add(addLeavesAndDelete(root, root, new ArrayList<Integer>(), 0));
