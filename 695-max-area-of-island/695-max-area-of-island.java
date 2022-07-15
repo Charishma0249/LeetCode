@@ -25,11 +25,10 @@ class Solution {
         
         grid[i][j]=-1;
         
-        int sum = 1 + findIslandArea(grid, i+1, j, rlen, collen)
+        return (1 + findIslandArea(grid, i+1, j, rlen, collen)
         + findIslandArea(grid, i, j-1, rlen, collen)
         + findIslandArea(grid, i-1, j, rlen, collen)
-        + findIslandArea(grid, i, j+1, rlen, collen);
+        + findIslandArea(grid, i, j+1, rlen, collen));
         
-        return sum;
     }
 }
