@@ -27,12 +27,9 @@ class Solution {
         while(!traverseStack.isEmpty()) {
             TreeNode node = traverseStack.pop();
             
-            if(visited.contains(node)) {
+            if( (node.left==null && node.right==null) || visited.contains(node)) {
                 result.add(node.val);
                 continue;
-            }
-            if(node.left==null && node.right==null) {
-                result.add(node.val);
             } else if(node.left==null && node.right!=null) {
                 traverseStack.push(node.right);
                 traverseStack.push(node);
