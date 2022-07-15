@@ -14,21 +14,22 @@
  * }
  */
 class Solution {
-    int max = Integer.MIN_VALUE;
     public int maxDepth(TreeNode root) {
         
-        dfs(root, 0);
-        return max;
+        if(root==null)
+            return 0;
+        
+        return Math.max(maxDepth(root.left)+1, maxDepth(root.right)+1);
     }
     
-    public void dfs(TreeNode node, int depth) {
+//     public int rec(TreeNode node) {
+//         if(node==null) {
+//             return 0;
+//         }
         
-        if(node==null) {
-            max = Math.max(max, depth);
-            return ;
-        }
+//         int leftDepth = rec(node.left)+1;
+//         int rightDepth = rec(node.right)+1;
         
-        dfs(node.left, depth+1);
-        dfs(node.right, depth+1);
-    }
+//         return Math.max(leftDepth, rightDepth);
+//     }
 }
