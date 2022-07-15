@@ -17,17 +17,37 @@ class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
         
         List<Integer> result = new ArrayList<>();
-        recInorder(root, result);
+        HashSet<TreeNode> visited = new HashSet<>();
+        Stack<TreeNode> traverseStack = new Stack<>();
+        
+        if(root==null) 
+            return result;
+        
+        traverseStack.push(root);
+        while(!traverseStack.isEmpty()) {
+            TreeNode node = traverseStack.pop();
+            
+            if(visited.contains(node)) {
+                result.add(node.val);
+                continue;
+            }
+            if(node.left==null && node.right==null) {
+                result.add(node.val);
+            } else if(node.left==null && node.right!=null) {
+                traverseStack.push(node.right);
+                traverseStack.push(node);
+            } else if(node.left!=null && node.right==null) {
+                traverseStack.push(node);
+                traverseStack.push(node.left);
+            } else {
+                traverseStack.push(node.right);
+                traverseStack.push(node);
+                traverseStack.push(node.left);
+            }
+            visited.add(node);
+        }
         
         return result;
     }
     
-    public void recInorder(TreeNode node, List<Integer> res) {
-        if(node==null)
-            return ;
-        
-        recInorder(node.left, res);
-        res.add(node.val);
-        recInorder(node.right, res);
-    }
 }
