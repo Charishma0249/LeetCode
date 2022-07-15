@@ -1,6 +1,6 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
-        int[] scount = new int[26];
+        HashMap<Character, Integer> hm = new HashMap<>();
         
         int slen = s.length();
         int tlen = t.length();
@@ -10,14 +10,24 @@ class Solution {
         
         for(int i=0; i<slen; i++) {
             char sc = s.charAt(i);
-            scount[sc-'a']++;
-            
             char tc = t.charAt(i);
-            scount[tc-'a']--;
+            
+            if(hm.containsKey(sc)) {
+                hm.put(sc, hm.get(sc)+1);
+            } else {
+                hm.put(sc, 1);
+            }
+            
+            if(hm.containsKey(tc)) {
+                hm.put(tc, hm.get(tc)-1);
+            } else {
+                hm.put(tc, -1);
+            }
         }
         
-        for(int i=0; i<26; i++) {
-            if(scount[i]!=0) {
+        for(Map.Entry<Character, Integer> entry : hm.entrySet()) {
+            
+            if(entry.getValue()!=0) {
                 return false;
             }
         }
