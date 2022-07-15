@@ -1,24 +1,28 @@
 class Solution {
     public int[] smallerNumbersThanCurrent(int[] nums) {
-        
-        // Arrays.sort(nums);
-        HashMap<Integer, Integer> hm = new HashMap<>();
         int len = nums.length;
+        
         int[] temp = new int[len];
-        // int[] res = new int[len];
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        int[] result = new int[len];
+        
         for(int i=0; i<len; i++) {
             temp[i] = nums[i];
         }
         
         Arrays.sort(temp);
-        for(int i=0; i<len; i++) {
-            if(!hm.containsKey(temp[i]))
+        
+        hm.put(temp[0], 0);
+        for(int i=1; i<len; i++) {
+            if(temp[i]!=temp[i-1]) {
                 hm.put(temp[i], i);
-        }
-        for(int i=0; i<len; i++) {
-            nums[i] = hm.get(nums[i]);
+            }
         }
         
-        return nums;
+        for(int i=0; i<len; i++) {
+            result[i] = hm.get(nums[i]);
+        }
+        
+        return result;
     }
 }
