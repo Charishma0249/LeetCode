@@ -9,8 +9,7 @@ class Solution {
             for(int j=0; j<collen; j++) {
                 
                 if(grid[i][j]==1) {
-                    int area = 1;
-                    maxArea = Math.max(maxArea, findIslandArea(grid, i, j, area, rlen, collen));
+                    maxArea = Math.max(maxArea, findIslandArea(grid, i, j, rlen, collen));
                 }
             }
         }
@@ -18,7 +17,7 @@ class Solution {
         return maxArea;
     }
     
-    public int findIslandArea(int[][] grid, int i, int j, int area, int rlen, int collen) {
+    public int findIslandArea(int[][] grid, int i, int j, int rlen, int collen) {
         
         if(i<0 || j<0 || i>=rlen || j>=collen || grid[i][j] <=0) {
             return 0;
@@ -26,10 +25,10 @@ class Solution {
         
         grid[i][j]=-1;
         
-        int sum = 1 + findIslandArea(grid, i+1, j, area, rlen, collen)
-        + findIslandArea(grid, i, j-1, area, rlen, collen)
-        + findIslandArea(grid, i-1, j, area, rlen, collen)
-        + findIslandArea(grid, i, j+1, area, rlen, collen);
+        int sum = 1 + findIslandArea(grid, i+1, j, rlen, collen)
+        + findIslandArea(grid, i, j-1, rlen, collen)
+        + findIslandArea(grid, i-1, j, rlen, collen)
+        + findIslandArea(grid, i, j+1, rlen, collen);
         
         return sum;
     }
