@@ -8,30 +8,18 @@ class Solution {
         if(slen!=tlen)
             return false;
         
-        for(int i=0; i<slen; i++) {
-            char sc = s.charAt(i);
-            char tc = t.charAt(i);
-            
-            if(hm.containsKey(sc)) {
-                hm.put(sc, hm.get(sc)+1);
-            } else {
-                hm.put(sc, 1);
-            }
-            
-            if(hm.containsKey(tc)) {
-                hm.put(tc, hm.get(tc)-1);
-            } else {
-                hm.put(tc, -1);
-            }
-        }
+        char[] sarr = s.toCharArray();
+        char[] tarr = t.toCharArray();
         
-        for(Map.Entry<Character, Integer> entry : hm.entrySet()) {
-            
-            if(entry.getValue()!=0) {
-                return false;
-            }
-        }
+        Arrays.sort(sarr);
+        Arrays.sort(tarr);
         
-        return true;
+        // System.out.println();
+        String sorteds = new String(sarr);
+        String sortedt = new String(tarr);
+        // System.out.println(sorteds);
+        // System.out.println(sortedt);
+        return sorteds.equals(sortedt);
+        // return true;
     }
 }
