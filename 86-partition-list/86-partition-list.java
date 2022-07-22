@@ -10,51 +10,52 @@
  */
 class Solution {
     public ListNode partition(ListNode head, int x) {
-        LinkedHashSet<ListNode> smallerElementsHashSet = new LinkedHashSet<>();
-        LinkedHashSet<ListNode> greaterElementsHashSet = new LinkedHashSet<>();
         
-        if(head==null || head.next==null)
-            return head;
-        ListNode node = head;
-        ListNode resultNode = null, prev=null;
+        ListNode slowPointer = head, fastPointer = head, fastPrev = head, slowPrev = head;
         
-        while(node!=null) {
-            
-            if(node.val<x) {
-                smallerElementsHashSet.add(node);
-            } else {
-                greaterElementsHashSet.add(node);
+        while(fastPointer!=null) {
+            if(fastPointer.val<x && fastPointer!=slowPointer && slowPointer.val<x) {
+                
+                if(slowPointer.next==fastPointer) {
+                    slowPrev = slowPointer;
+                    slowPointer = fastPointer;
+                    fastPrev = fastPointer;
+                    fastPointer = fastPointer.next;
+                    continue;
+                }
+                
+                ListNode slowNext = slowPointer.next;
+                slowPointer.next = fastPointer;
+                fastPrev.next = fastPointer.next; ///
+                fastPointer.next = slowNext;
+                slowPrev = slowPointer;
+                slowPointer = fastPointer;
+                fastPointer = fastPrev.next;
+            } else if(fastPointer.val<x && fastPointer!=slowPointer && slowPointer.val>=x) {
+                
+                if(slowPrev == head && slowPrev.val>=x) {
+                    head = fastPointer;
+                    slowPrev = head;
+                } else {
+                    slowPrev.next = fastPointer;
+                    slowPrev = fastPointer;
+                }
+                
+                fastPrev.next = fastPointer.next;
+                fastPointer.next = slowPointer;
+                // slowPrev = fastPointer;
+                fastPointer = fastPrev.next;
+                
+                // fastPointer = fastPointer.next;
+                // slowPrev.next.next = slowPointer;
+                // slowPrev = slowPrev.next;
             }
-            node = node.next;
+            else {
+                fastPrev = fastPointer;
+                fastPointer = fastPointer.next; 
+            }
         }
         
-        head = resultNode;
-        int i=0;
-        for(ListNode curNode : smallerElementsHashSet) {
-            // resultNode = new ListNode();
-            resultNode = curNode;
-            if(i==0) {
-                head = resultNode;
-                i++;
-            } else {
-                prev.next = resultNode;
-            }
-            prev = resultNode;
-        }
-        
-        for(ListNode curNode : greaterElementsHashSet) {
-            // resultNode = new ListNode();
-            resultNode = curNode;
-            if(i==0) {
-                head = resultNode;
-                i++;
-            } else {
-                prev.next = resultNode;
-            }
-            prev = resultNode;
-        }
-        
-        resultNode.next = null;
         return head;
     }
 }
