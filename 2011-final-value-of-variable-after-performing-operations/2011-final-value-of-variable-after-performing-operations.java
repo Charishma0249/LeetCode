@@ -6,26 +6,20 @@ class Solution {
         for(int i=0; i<operations.length; i++) {
             
             String s = operations[i];
-            
-            for(int j=0; j<s.length(); j++) {
                 
-                char c = s.charAt(j);
+            char c = s.charAt(0);
                 
-                if(c=='X') {
-                    if(j+1<s.length()) {
-                        char nc = s.charAt(j+1);
-                        if(nc=='-') {
-                            result--;
-                        } else {
-                            result++;
-                        }
-                    }
-                } else if(c=='-') {
+            if(c=='X') {
+                char nc = s.charAt(1);
+                if(nc=='-') {
                     result--;
                 } else {
                     result++;
                 }
-                break;
+            } else if(c=='-') {
+                result--;
+            } else {
+                result++;
             }
         }
         
