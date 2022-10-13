@@ -12,6 +12,7 @@ class Solution {
                 
                 if(sr == i && sc == j) {
                     dfs(image, i, j, rlen, collen, image[sr][sc], color);
+                    return image;
                 }
             }
         }
