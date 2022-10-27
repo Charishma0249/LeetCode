@@ -4,9 +4,7 @@ class Solution {
         int val = 'a';
         String result="";
         
-        for(int i=0; i<key.length(); i++) {
-            
-            char c = key.charAt(i);
+        for(char c: key.toCharArray()) {
             
             if(!hm.containsKey(c) && c!=' ') {
                 hm.put(c, (char)val);
