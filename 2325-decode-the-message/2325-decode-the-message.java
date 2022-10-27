@@ -2,7 +2,7 @@ class Solution {
     public String decodeMessage(String key, String message) {
         HashMap<Character, Character> hm = new HashMap<>();
         int val = 'a';
-        String result="";
+        StringBuilder result= new StringBuilder();
         
         for(char c: key.toCharArray()) {
             
@@ -14,12 +14,12 @@ class Solution {
         
         for(char c: message.toCharArray()) {
             if(c==' ') {
-                result+=c;
+                result.append(c);
             } else {
-                result += hm.get(c);
+                result.append(hm.get(c));
             }
         }
         
-        return result;
+        return result.toString();
     }
 }
