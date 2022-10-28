@@ -1,30 +1,20 @@
 class Solution {
     public int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {
         
-        int size = items.size();
-        String[] arrType = new String[size];
-        String[] arrColor = new String[size];
-        String[] arrName = new String[size];
-        
-        for(int i=0; i<items.size(); i++) {
-            arrType[i] = items.get(i).get(0);
-            arrColor[i] = items.get(i).get(1);
-            arrName[i] = items.get(i).get(2);
-        }
         if(ruleKey.equals("type")) {
-            return countItems(arrType, ruleValue);
+            return countItems(items, ruleValue, 0);
         } else if(ruleKey.equals("color")) {
-            return countItems(arrColor, ruleValue);
+            return countItems(items, ruleValue, 1);
         } else {
-            return countItems(arrName, ruleValue);
+            return countItems(items, ruleValue, 2);
         }
     }
     
-    public int countItems(String[] arr, String ruleValue) {
+    public int countItems(List<List<String>> items, String ruleValue, int key) {
         int count = 0;
         
-        for(int i=0; i<arr.length; i++) {
-            if(arr[i].equals(ruleValue)) {
+        for(int i=0; i<items.size(); i++) {
+            if(items.get(i).get(key).equals(ruleValue)) {
                 count++;
             }
         }
