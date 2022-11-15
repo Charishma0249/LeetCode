@@ -25,25 +25,51 @@ class Solution {
             hm.put(edges[i][1], arr);
         }
         
-        qu.add(source);
-        while(!qu.isEmpty()) {
-            int temp = qu.poll();
+        return dfs(source, destination, hm, a);
+        
+//         qu.add(source);
+//         while(!qu.isEmpty()) {
+//             int temp = qu.poll();
             
-            if(a[temp]==1)
-                continue;
+//             if(a[temp]==1)
+//                 continue;
             
-            a[temp]=1;
-            if(temp==destination)
-                return true;
-            if(hm.containsKey(temp)) {
-                ArrayList<Integer> arr = hm.get(temp);
+//             a[temp]=1;
+//             if(temp==destination)
+//                 return true;
+//             if(hm.containsKey(temp)) {
+//                 ArrayList<Integer> arr = hm.get(temp);
                 
-                for(int i=0; i<arr.size(); i++) {
-                    qu.add(arr.get(i));
-                }
-            }
+//                 for(int i=0; i<arr.size(); i++) {
+//                     qu.add(arr.get(i));
+//                 }
+//             }
+//         }
+        
+        // return false;
+    }
+    
+    public boolean dfs(int temp, int des, HashMap<Integer, ArrayList<Integer>> hm, int[] a) {
+        
+        if(temp==des) {
+            return true;
         }
         
-        return false;
+        if(a[temp]==1 || !hm.containsKey(temp)) {
+            return false;
+        }
+        a[temp]=1;
+        ArrayList<Integer> arr = hm.get(temp);
+        
+        boolean result = false;
+        for(int i=0; i<arr.size(); i++) {
+            temp = arr.get(i);
+            result = result || dfs(temp, des, hm, a);
+            
+            if(result)
+                return true;
+        }
+        
+        return result;
     }
 }
