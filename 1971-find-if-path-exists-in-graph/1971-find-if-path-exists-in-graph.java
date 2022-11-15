@@ -3,7 +3,6 @@ class Solution {
         
         HashMap<Integer, ArrayList<Integer>> hm = new HashMap<>();
         int num = edges.length;
-        Queue<Integer> qu = new LinkedList<>();
         int[] a = new int[n+1];
         
         for(int i=0; i<num; i++) {
@@ -26,27 +25,7 @@ class Solution {
         }
         
         return dfs(source, destination, hm, a);
-        
-//         qu.add(source);
-//         while(!qu.isEmpty()) {
-//             int temp = qu.poll();
-            
-//             if(a[temp]==1)
-//                 continue;
-            
-//             a[temp]=1;
-//             if(temp==destination)
-//                 return true;
-//             if(hm.containsKey(temp)) {
-//                 ArrayList<Integer> arr = hm.get(temp);
-                
-//                 for(int i=0; i<arr.size(); i++) {
-//                     qu.add(arr.get(i));
-//                 }
-//             }
-//         }
-        
-        // return false;
+
     }
     
     public boolean dfs(int temp, int des, HashMap<Integer, ArrayList<Integer>> hm, int[] a) {
