@@ -1,31 +1,23 @@
 class Solution {
     public int findCenter(int[][] edges) {
         HashMap<Integer, Integer> hm = new HashMap<>();
+        
+        int[] arr = new int[edges.length+2];
         int maxEdges = 0, centerNode=1;
         
         for(int i=0; i<edges.length; i++) {
             
-            int count = 0;
-            if(hm.containsKey(edges[i][0])) {
-                count = hm.get(edges[i][0]);
-            } 
+            arr[edges[i][0]]++;
             
-            hm.put(edges[i][0], count+1);
-            
-            if(maxEdges < count) {
-                maxEdges = count;
+            if(maxEdges < arr[edges[i][0]]) {
+                maxEdges = arr[edges[i][0]];
                 centerNode = edges[i][0];
             }
-            count = 0;
             
-            if(hm.containsKey(edges[i][1])) {
-                count = hm.get(edges[i][1]);
-            }
+            arr[edges[i][1]]++;
             
-            hm.put(edges[i][1], count+1);
-            
-            if(maxEdges < count) {
-                maxEdges = count;
+            if(maxEdges < arr[edges[i][1]]) {
+                maxEdges = arr[edges[i][1]];
                 centerNode = edges[i][1];
             }
         }
