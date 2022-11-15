@@ -4,7 +4,7 @@ class Solution {
         HashMap<Integer, ArrayList<Integer>> hm = new HashMap<>();
         int num = edges.length;
         Queue<Integer> qu = new LinkedList<>();
-        HashSet<Integer> visited = new HashSet<>();
+        int[] a = new int[n+1];
         
         for(int i=0; i<num; i++) {
             
@@ -29,10 +29,10 @@ class Solution {
         while(!qu.isEmpty()) {
             int temp = qu.poll();
             
-            if(visited.contains(temp))
+            if(a[temp]==1)
                 continue;
             
-            visited.add(temp);
+            a[temp]=1;
             if(temp==destination)
                 return true;
             if(hm.containsKey(temp)) {
